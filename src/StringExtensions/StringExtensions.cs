@@ -34,7 +34,8 @@ namespace UsefulDataTools
 
         public static string ToTrimmedString(this object input)
         {
-            return input.ToString().Trim();
+            var type = input.GetType();
+            return type == typeof (string) ? ((string)input).Trim() : input.ToString().Trim();
         }
 
         public static string AddWhitespaceLeft(this string input,int length)
