@@ -14,3 +14,36 @@ DataOutputExtensions
 --------------------
 * ToCsv - Outputs the object as a CSV string converting all simple types to string.
 * ToXml - Recursively outputs an XML of an object until a simple type is reached. Also checks for infinite loops using hash codes.
+
+Simple Types
+************
+byte
+sbyte
+int
+uint
+short
+ushort
+long
+ulong
+float
+double
+decimal
+bool
+char
+DateTime
+byte?
+sbyte?
+int?
+uint?
+short?
+ushort?
+long?
+ulong?
+float?
+double?
+decimal?
+bool?
+char?
+DateTime?
+string
+System.Enum
