@@ -8,11 +8,9 @@ namespace UsefulDataTools
 {
     public static class CsvOutputExtensions
     {
-
         public static string ToCsv<T>(this IEnumerable<T> input, char separator = ',', string path = null)
         {
-            var type = typeof(T);
-            var properties = type.GetProperties();
+            var type = typeof (T);
             string output;
 
             if (type.IsSimpleType())
@@ -20,11 +18,27 @@ namespace UsefulDataTools
 
             else
             {
+                var properties = type.GetProperties();
+                var fields = type.GetFields();
                 var stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine(string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.Name).ToArray()));
+
+                stringBuilder.AppendLine(
+                                         string.Concat(
+                                                       string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.Name).ToArray()),
+                                                       fields.Any(f => f.FieldType.IsSimpleType()) ? separator.ToString() : string.Empty,
+                                                       string.Join(separator.ToString(), fields.Where(f => f.FieldType.IsSimpleType()).Select(f => f.Name).ToArray())
+                                             )
+                    );
+
                 foreach (var element in input)
                 {
-                    stringBuilder.AppendLine(string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.GetValue(element)).ToArray()));
+                    stringBuilder.AppendLine(
+                                             string.Concat(
+                                                           string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.GetValue(element)).ToArray()),
+                                                           fields.Any(f => f.FieldType.IsSimpleType()) ? separator.ToString() : string.Empty,
+                                                           string.Join(separator.ToString(), fields.Where(f => f.FieldType.IsSimpleType()).Select(f => f.GetValue(element)).ToArray())
+                                                 )
+                        );
                 }
 
                 output = stringBuilder.ToString();

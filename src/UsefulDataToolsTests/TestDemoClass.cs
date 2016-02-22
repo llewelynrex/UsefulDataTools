@@ -18,6 +18,7 @@ namespace UsefulDataToolsTests
         public bool BooleanProperty { get; set; }
         public char CharacterProperty { get; set; }
         public DateTime DateTimeProperty { get; set; }
+        public TestDemoEnum TestDemoEnumProperty { get; set; }
         public byte? NullableByteProperty { get; set; }
         public sbyte? NullableSByteProperty { get; set; }
         public int? NullableIntProperty { get; set; }
@@ -32,7 +33,9 @@ namespace UsefulDataToolsTests
         public bool? NullableBooleanProperty { get; set; }
         public char? NullableCharacterProperty { get; set; }
         public DateTime? NullableDateTimeProperty { get; set; }
+        public TestDemoEnum? NullableTestDemoEnumProperty { get; set; }
         public string StringProperty { get; set; }
+        public TestDemoClass TestDemoClassProperty { get; set; }
 
         public byte ByteField;
         public sbyte SByteField;
@@ -48,6 +51,7 @@ namespace UsefulDataToolsTests
         public bool BooleanField;
         public char CharacterField;
         public DateTime DateTimeField;
+        public TestDemoEnum TestDemoEnumField;
         public byte? NullableByteField;
         public sbyte? NullableSByteField;
         public int? NullableIntField;
@@ -62,6 +66,14 @@ namespace UsefulDataToolsTests
         public bool? NullableBooleanField;
         public char? NullableCharacterField;
         public DateTime? NullableDateTimeField;
+        public TestDemoEnum? NullableTestDemoEnumField;
         public string StringField;
+        public TestDemoClass TestDemoClassField;
+    }
+
+    public enum TestDemoEnum
+    {
+        Value1,
+        Value2
     }
 }
