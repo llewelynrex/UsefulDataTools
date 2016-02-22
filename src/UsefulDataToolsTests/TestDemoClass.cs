@@ -70,10 +70,4 @@ namespace UsefulDataToolsTests
         public string StringField;
         public TestDemoClass TestDemoClassField;
     }
-
-    public enum TestDemoEnum
-    {
-        Value1,
-        Value2
-    }
 }

@@ -7,7 +7,7 @@ using UsefulDataTools;
 namespace UsefulDataToolsTests
 {
     [TestClass]
-    public class CsvOutputExtensionsTest
+    public class CsvOutputExtensionTest
     {
         public List<TestDemoClass> TestDemoClasses { get; set; }
         public DateTime utc { get; set; }
@@ -161,7 +161,7 @@ namespace UsefulDataToolsTests
         }
 
         [TestMethod]
-        public void TestCsvOutput()
+        public void TestToCsvOutput()
         {
             var testStringBuilder = new StringBuilder();
             testStringBuilder.AppendLine("ByteProperty,SByteProperty,IntProperty,UIntProperty,ShortProperty,UShortProperty,LongProperty,ULongProperty,FloatProperty,DoubleProperty,DecimalProperty,BooleanProperty,CharacterProperty,DateTimeProperty,TestDemoEnumProperty,NullableByteProperty,NullableSByteProperty,NullableIntProperty,NullableUIntProperty,NullableShortProperty,NullableUShortProperty,NullableLongProperty,NullableULongProperty,NullableFloatProperty,NullableDoubleProperty,NullableDecimalProperty,NullableBooleanProperty,NullableCharacterProperty,NullableDateTimeProperty,NullableTestDemoEnumProperty,StringProperty,ByteField,SByteField,IntField,UIntField,ShortField,UShortField,LongField,ULongField,FloatField,DoubleField,DecimalField,BooleanField,CharacterField,DateTimeField,TestDemoEnumField,NullableByteField,NullableSByteField,NullableIntField,NullableUIntField,NullableShortField,NullableUShortField,NullableLongField,NullableULongField,NullableFloatField,NullableDoubleField,NullableDecimalField,NullableBooleanField,NullableCharacterField,NullableDateTimeField,NullableTestDemoEnumField,StringField");
