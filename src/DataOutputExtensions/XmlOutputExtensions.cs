@@ -22,6 +22,14 @@ namespace UsefulDataTools
             var hashCode = input.GetHashCode();
             var hashCodeElement = new HashCodeElement(hashCode);
 
+            var type = input.GetType();
+            if (type.IsSimpleType())
+            {
+                input.Process(xDocument, rootXElement, type.Name, string.Empty, type, _ => input, hashCodeElement);
+                return xDocument;
+            }
+
+
             var enumerable = input as IEnumerable;
             if (enumerable != null)
                 ToXmlInternal(enumerable, xDocument, rootXElement, hashCodeElement);
@@ -103,8 +111,11 @@ namespace UsefulDataTools
         {
             var childXElement = new XElement(XName.Get($"{name}"));
             currentXContainer.Add(childXElement);
-            var memberTypeXAttribute = new XAttribute(XName.Get("MemberType"),memberType);
-            childXElement.Add(memberTypeXAttribute);
+            if (!string.IsNullOrEmpty(memberType))
+            {
+                var memberTypeXAttribute = new XAttribute(XName.Get("MemberType"),memberType);
+                childXElement.Add(memberTypeXAttribute);
+            }
 
             if (type.IsSimpleType())
             {
