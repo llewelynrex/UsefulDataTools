@@ -119,12 +119,18 @@ namespace UsefulDataTools
 
             if (type.IsSimpleType())
             {
-                if (type.Name == "Nullable`1")
+                var underlyingType = Nullable.GetUnderlyingType(type);
+                if (underlyingType != null)
                 {
-                    var genericTypeNames = string.Join(",", type.GenericTypeArguments.Select(x => x.FullName));
-                    var childXElementTypeXAttrbute = new XAttribute(XName.Get("Type"), $"{genericTypeNames}?");
+                    var childXElementTypeXAttrbute = new XAttribute(XName.Get("Type"), $"{underlyingType.FullName}?");
                     childXElement.Add(childXElementTypeXAttrbute);
                 }
+                //if (type.Name == "Nullable`1")
+                //{
+                //    var genericTypeNames = string.Join(",", type.GenericTypeArguments.Select(x => x.FullName));
+                //    var childXElementTypeXAttrbute = new XAttribute(XName.Get("Type"), $"{genericTypeNames}?");
+                //    childXElement.Add(childXElementTypeXAttrbute);
+                //}
                 else
                 {
                     var childXElementTypeXAttrbute = new XAttribute(XName.Get("Type"), type.FullName);

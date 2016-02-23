@@ -24,32 +24,18 @@ namespace UsefulDataToolsTests
         {
             var byteOutput = ((byte)1).ToXml();
             var sbyteOutput = ((sbyte)1).ToXml();
-            var intOutput = ((int)1).ToXml();
+            var intOutput = 1.ToXml();
             var uintOutput = ((uint)1).ToXml();
             var shortOutput = ((short)1).ToXml();
             var ushortOutput = ((ushort)1).ToXml();
-            var longOutput = ((long)1).ToXml();
+            var longOutput = 1L.ToXml();
             var ulongOutput = ((ulong)1).ToXml();
-            var floatOutput = ((float)1).ToXml();
-            var doubleOutput = ((double)1).ToXml();
-            var decimalOutput = ((decimal)1).ToXml();
+            var floatOutput = 1F.ToXml();
+            var doubleOutput = 1D.ToXml();
+            var decimalOutput = 1M.ToXml();
             var boolOutput = true.ToXml();
             var charOutput = ' '.ToXml();
             var dateTimeOutput = utc.ToXml();
-            var nullableByteOutput = ((byte?)1).ToXml();
-            var nullableSByteOutput = ((sbyte?)1).ToXml();
-            var nullableIntOutput = ((int?)1).ToXml();
-            var nullableUIntOutput = ((uint?)1).ToXml();
-            var nullableShortOutput = ((short?)1).ToXml();
-            var nullableUShortOutput = ((ushort?)1).ToXml();
-            var nullableLongOutput = ((long?)1).ToXml();
-            var nullableULongOutput = ((ulong?)1).ToXml();
-            var nullableFloatOutput = ((float?)1).ToXml();
-            var nullableDoubleOutput = ((double?)1).ToXml();
-            var nullableDecimalOutput = ((decimal?)1).ToXml();
-            var nullableBoolOutput = ((bool?)true).ToXml();
-            var nullableCharOutput = ((char?)' ').ToXml();
-            var nullableDateTimeOutput = ((DateTime?)utc).ToXml();
             var stringOutput = "Hello World".ToXml();
         }
 
@@ -62,6 +48,14 @@ namespace UsefulDataToolsTests
         [TestMethod]
         public void TestToXmlRecursiveOutput()
         {
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestNullToXmlOutput()
+        {
+            string nullVariable = null;
+            nullVariable.ToXml();
         }
     }
 }

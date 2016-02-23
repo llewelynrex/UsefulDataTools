@@ -8,6 +8,16 @@ namespace UsefulDataTools
 {
     public static class CsvOutputExtensions
     {
+        /// <summary>
+        /// Returns a csv string using all of the public properties and public fields from each 
+        /// item of Type T in the IEnumerable collection using the default or specified separator 
+        /// character and optionally saves the string to a file .
+        /// </summary>
+        /// <typeparam name="T">Any type T.</typeparam>
+        /// <param name="input">An IEnumerable of Type T.</param>
+        /// <param name="separator">Optional: A separator to use for the csv output. Default = ','</param>
+        /// <param name="path">Optional: A path string which is used to automatically write the generated csv to a file.</param>
+        /// <returns>string</returns>
         public static string ToCsv<T>(this IEnumerable<T> input, char separator = ',', string path = null)
         {
             var type = typeof (T);
