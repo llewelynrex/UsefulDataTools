@@ -81,6 +81,14 @@
     <Compile Include="XmlOutputExtensionTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{f6a36e27-b8a0-45f2-9a25-e6e87edd8801}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CsvOutputExtensions\CsvOutputExtensions.csproj">
+      <Project>{8bc380fc-f6f3-437e-815f-3c7a332ff522}</Project>
+      <Name>CsvOutputExtensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataOutputExtensions\DataOutputExtensions.csproj">
       <Project>{b0796dd8-377e-4681-a088-a734575e9259}</Project>
       <Name>DataOutputExtensions</Name>
