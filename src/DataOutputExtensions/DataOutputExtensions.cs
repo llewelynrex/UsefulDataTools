@@ -5,7 +5,7 @@ namespace UsefulDataTools
 {
     public static class DataOutputExtensions
     {
-        internal static readonly Func<Type, bool> SimpleTypesPredicate;
+        private static readonly Func<Type, bool> SimpleTypesPredicate;
 
         static DataOutputExtensions()
         {
