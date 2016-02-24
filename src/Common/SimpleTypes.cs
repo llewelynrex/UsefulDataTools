@@ -3,11 +3,11 @@ using System.Reflection;
 
 namespace UsefulDataTools
 {
-    public static class DataOutputExtensions
+    public static class SimpleTypes
     {
         private static readonly Func<Type, bool> SimpleTypesPredicate;
 
-        static DataOutputExtensions()
+        static SimpleTypes()
         {
             SimpleTypesPredicate = t =>
                                    t == typeof (byte) ||
