@@ -2,7 +2,7 @@ namespace UsefulDataTools
 {
     internal class HashCodeElement
     {
-        public int CurrentHashCode { get; }
+        private int CurrentHashCode { get; }
 
         public HashCodeElement ParentHashCodeElement { get; set; }
 
