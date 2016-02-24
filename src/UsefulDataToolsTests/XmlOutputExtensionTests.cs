@@ -10,7 +10,7 @@ namespace UsefulDataToolsTests
     [TestClass]
     public class XmlOutputExtensionTests
     {
-        public List<ToCsvTestDemoClass> TestDemoClasses { get; set; }
+        public List<TestDemoClass> TestDemoClasses { get; set; }
         public DateTime utc { get; set; }
 
         [TestInitialize]

@@ -9,19 +9,19 @@ namespace UsefulDataToolsTests
     [TestClass]
     public class CsvOutputExtensionTest
     {
-        public List<ToCsvTestDemoClass> TestDemoClasses { get; set; }
+        public List<TestDemoClass> TestDemoClasses { get; set; }
         public DateTime utc { get; set; }
         public DateTime today { get; set; }
 
         [TestInitialize]
         public void Initialize()
         {
-            TestDemoClasses = new List<ToCsvTestDemoClass>();
+            TestDemoClasses = new List<TestDemoClass>();
 
             today = DateTime.Today;
             utc = DateTime.UtcNow;
 
-            var testDemoClass1 = new ToCsvTestDemoClass
+            var testDemoClass1 = new TestDemoClass
                                  {
                                      BooleanProperty = false,
                                      ByteProperty = 0,
@@ -53,7 +53,7 @@ namespace UsefulDataToolsTests
                                      UIntProperty = 0,
                                      ULongProperty = 0,
                                      UShortProperty = 0,
-                                     ToCsvTestDemoClassProperty = new ToCsvTestDemoClass(),
+                                     TestDemoClassProperty = new TestDemoClass(),
                                      TestDemoEnumProperty = TestDemoEnum.Value1,
                                      BooleanField = true,
                                      ByteField = 1,
@@ -85,10 +85,10 @@ namespace UsefulDataToolsTests
                                      UIntField = 1,
                                      ULongField = 1,
                                      UShortField = 1,
-                                     ToCsvTestDemoClassField = new ToCsvTestDemoClass(),
+                                     TestDemoClassField = new TestDemoClass(),
                                      TestDemoEnumField = TestDemoEnum.Value1
                                  };
-            var testDemoClass2 = new ToCsvTestDemoClass
+            var testDemoClass2 = new TestDemoClass
                                  {
                                      BooleanProperty = false,
                                      ByteProperty = 0,
@@ -120,7 +120,7 @@ namespace UsefulDataToolsTests
                                      UIntProperty = 0,
                                      ULongProperty = 0,
                                      UShortProperty = 0,
-                                     ToCsvTestDemoClassProperty = new ToCsvTestDemoClass(),
+                                     TestDemoClassProperty = new TestDemoClass(),
                                      TestDemoEnumProperty = TestDemoEnum.Value1,
                                      BooleanField = true,
                                      ByteField = 1,
@@ -152,7 +152,7 @@ namespace UsefulDataToolsTests
                                      UIntField = 1,
                                      ULongField = 1,
                                      UShortField = 1,
-                                     ToCsvTestDemoClassField = new ToCsvTestDemoClass(),
+                                     TestDemoClassField = new TestDemoClass(),
                                      TestDemoEnumField = TestDemoEnum.Value1
                                  };
 

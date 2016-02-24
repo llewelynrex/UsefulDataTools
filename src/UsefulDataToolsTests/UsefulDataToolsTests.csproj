@@ -73,9 +73,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CsvOutputExtensionTest.cs" />
+    <Compile Include="IsSimpleTypeTests.cs" />
     <Compile Include="StringExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToCsvTestDemoClass.cs" />
+    <Compile Include="TestDemoClass.cs" />
     <Compile Include="TestDemoEnum.cs" />
     <Compile Include="XmlOutputExtensionTests.cs" />
   </ItemGroup>

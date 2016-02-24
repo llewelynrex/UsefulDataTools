@@ -2,7 +2,7 @@
 
 namespace UsefulDataToolsTests
 {
-    public class ToCsvTestDemoClass
+    public class TestDemoClass
     {
         public byte ByteProperty { get; set; }
         public sbyte SByteProperty { get; set; }
@@ -35,7 +35,7 @@ namespace UsefulDataToolsTests
         public DateTime? NullableDateTimeProperty { get; set; }
         public TestDemoEnum? NullableTestDemoEnumProperty { get; set; }
         public string StringProperty { get; set; }
-        public ToCsvTestDemoClass ToCsvTestDemoClassProperty { get; set; }
+        public TestDemoClass TestDemoClassProperty { get; set; }
 
         public byte ByteField;
         public sbyte SByteField;
@@ -68,6 +68,6 @@ namespace UsefulDataToolsTests
         public DateTime? NullableDateTimeField;
         public TestDemoEnum? NullableTestDemoEnumField;
         public string StringField;
-        public ToCsvTestDemoClass ToCsvTestDemoClassField;
+        public TestDemoClass TestDemoClassField;
     }
 }
