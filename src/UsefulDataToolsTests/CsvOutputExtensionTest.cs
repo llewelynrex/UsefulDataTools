@@ -9,9 +9,9 @@ namespace UsefulDataToolsTests
     [TestClass]
     public class CsvOutputExtensionTest
     {
-        public List<TestDemoClass> TestDemoClasses { get; set; }
-        public DateTime utc { get; set; }
-        public DateTime today { get; set; }
+        private List<TestDemoClass> TestDemoClasses { get; set; }
+        private DateTime utc { get; set; }
+        private DateTime today { get; set; }
 
         [TestInitialize]
         public void Initialize()
