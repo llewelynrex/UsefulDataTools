@@ -165,8 +165,24 @@ namespace UsefulDataToolsTests
         [ExpectedException(typeof(ArgumentException))]
         public void AddWhitespaceRightArgumentExceptionTest2()
         {
-            string teststring = null;
-            teststring.AddWhitespaceRight(5);
+            string testString = null;
+            testString.AddWhitespaceRight(5);
+        }
+
+        [TestMethod]
+        public void TestToTrimmedStringOnString()
+        {
+            var testString = "    Foo Bar    ".ToTrimmedString();
+            var expectedString = "Foo Bar";
+            Assert.AreEqual(expectedString, testString);
+        }
+
+        [TestMethod]
+        public void TestToTrimmedStringOnObject()
+        {
+            var testString = new object().ToTrimmedString();
+            var expectedString = "System.Object";
+            Assert.AreEqual(expectedString, testString);
         }
     }
 }
