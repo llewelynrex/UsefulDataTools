@@ -51,8 +51,7 @@ namespace UsefulDataTools
         /// <returns>string</returns>
         public static string ToTrimmedString(this object input)
         {
-            var type = input.GetType();
-            return type == typeof (string) ? ((string)input).Trim() : input.ToString().Trim();
+            return input.ToString().Trim();
         }
 
         /// <summary>
