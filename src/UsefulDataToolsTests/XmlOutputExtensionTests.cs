@@ -89,7 +89,7 @@ namespace UsefulDataToolsTests
                                  TestDemoEnumField = TestDemoEnum.Value1
                              };
 
-            var _testDemoClass2 = new TestDemoClass
+            var testDemoClass2 = new TestDemoClass
                                   {
                                       BooleanProperty = false,
                                       ByteProperty = 0,
@@ -158,7 +158,7 @@ namespace UsefulDataToolsTests
                                   };
 
             _testDemoClasses = new List<TestDemoClass>(2);
-            _testDemoClasses.AddRange(new[] {_testDemoClass, _testDemoClass2});
+            _testDemoClasses.AddRange(new[] {_testDemoClass, testDemoClass2});
 
             _xDocument = new XDocument(new XDeclaration("1.0", "UTF-8", null));
             var rootXElement = new XElement(XName.Get("Root"));
@@ -223,10 +223,16 @@ namespace UsefulDataToolsTests
         }
 
         [TestMethod]
-        public void TestToXmlComplexTypeOutput() {}
+        public void TestToXmlComplexTypeOutput()
+        {
+            //TODO: Test non-simple object
+        }
 
         [TestMethod]
-        public void TestToXmlRecursiveOutput() {}
+        public void TestToXmlRecursiveOutput()
+        {
+            //TODO: Test recursive objects
+        }
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]

@@ -4,7 +4,7 @@ namespace UsefulDataTools
     {
         private int CurrentHashCode { get; }
 
-        public HashCodeElement ParentHashCodeElement { get; set; }
+        public HashCodeElement ParentHashCodeElement { private get; set; }
 
         public HashCodeElement(int hashCode)
         {
