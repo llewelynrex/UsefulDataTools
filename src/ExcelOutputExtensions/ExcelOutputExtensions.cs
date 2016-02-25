@@ -152,10 +152,7 @@ namespace UsefulDataTools
             {
                 var rangeColumn = GetExcelColumnName(column + 1);
                 var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-                if (simpleProperties[column].PropertyType == typeof(string) || simpleProperties[column].PropertyType == typeof(char) || Nullable.GetUnderlyingType(simpleProperties[column].PropertyType) == typeof(char))
-                    range.NumberFormat = "@";
-                else if (simpleProperties[column].PropertyType == typeof(DateTime) || Nullable.GetUnderlyingType(simpleProperties[column].PropertyType) == typeof(DateTime))
-                    range.NumberFormat = dateFormat;
+                SetRangeNumberFormatBasedOnDataType(simpleProperties[column].PropertyType,range,dateFormat);
             }
         }
 
@@ -165,11 +162,16 @@ namespace UsefulDataTools
             {
                 var rangeColumn = GetExcelColumnName(column + 1);
                 var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-                if (simpleFields[column - simplePropertiesCount].FieldType == typeof(string) || simpleFields[column - simplePropertiesCount].FieldType == typeof(char) || Nullable.GetUnderlyingType(simpleFields[column - simplePropertiesCount].FieldType) == typeof(char))
-                    range.NumberFormat = "@";
-                else if (simpleFields[column - simplePropertiesCount].FieldType == typeof(DateTime) || Nullable.GetUnderlyingType(simpleFields[column - simplePropertiesCount].FieldType) == typeof(DateTime))
-                    range.NumberFormat = dateFormat;
+                SetRangeNumberFormatBasedOnDataType(simpleFields[column - simplePropertiesCount].FieldType, range, dateFormat);
             }
+        }
+
+        private static void SetRangeNumberFormatBasedOnDataType(Type type, Range range, string dateFormat)
+        {
+            if (type == typeof(string) || type == typeof(char) || Nullable.GetUnderlyingType(type) == typeof(char))
+                range.NumberFormat = "@";
+            else if (type == typeof(DateTime) || Nullable.GetUnderlyingType(type) == typeof(DateTime))
+                range.NumberFormat = dateFormat;
         }
 
         private static void SetPropertyDataPerColumn<T>(bool stringsTrimmed, T[] inputArray, PropertyInfo[] simpleProperties, int simplePropertyCount, object[,] dataArray, int row)
@@ -208,10 +210,7 @@ namespace UsefulDataTools
 
             const string rangeColumn = "A";
             var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-            if (type == typeof(string) || type == typeof(char) || Nullable.GetUnderlyingType(type) == typeof(char))
-                range.NumberFormat = "@";
-            else if (type == typeof(DateTime) || Nullable.GetUnderlyingType(type) == typeof(DateTime))
-                range.NumberFormat = dateFormat;
+            SetRangeNumberFormatBasedOnDataType(type,range,dateFormat);
 
             dataRange.Value2 = dataArray;
 
