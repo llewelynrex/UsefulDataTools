@@ -35,6 +35,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LinqToExcel, Version=1.10.1.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=x86">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\LinqToExcel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.FileSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.FileSystem.4.0.0\lib\net46\System.IO.FileSystem.dll</HintPath>
@@ -73,6 +93,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CsvOutputExtensionTest.cs" />
+    <Compile Include="ExcelOutputExtensionTests.cs" />
+    <Compile Include="ExcelTestDemoClass.cs" />
     <Compile Include="IsSimpleTypeTests.cs" />
     <Compile Include="StringExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +111,10 @@
       <Project>{8bc380fc-f6f3-437e-815f-3c7a332ff522}</Project>
       <Name>CsvOutputExtensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExcelOutputExtensions\ExcelOutputExtensions.csproj">
+      <Project>{17ae780b-30e7-4e24-82d9-212bcd3ae67d}</Project>
+      <Name>ExcelOutputExtensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StringExtensions\StringExtensions.csproj">
       <Project>{cfbb517b-9e15-4973-84ca-96168e930376}</Project>
       <Name>StringExtensions</Name>
@@ -99,6 +125,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
