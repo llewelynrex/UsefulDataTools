@@ -43,19 +43,22 @@ namespace UsefulDataTools
                 {
                     using (var wb = app.Workbooks.Add())
                     {
-                        var ws = (Worksheet)wb.Worksheets.Single();
-                        ws.Name = type.Name;
-
-                        if (type.IsSimpleType())
+                        app.SheetsInNewWorkbook = sheetsInNewWorkbook;
+                        using (var ws = (Worksheet)wb.Worksheets.Single())
                         {
-                            SimpleTypeProcessing(type, inputArray, rowCount, dateFormat, ws);
-                        }
-                        else
-                        {
-                            ComplexTypeProcessing(stringsTrimmed, type, inputArray, rowCount, dateFormat, ws);
-                        }
+                            ws.Name = type.Name;
 
-                        ws.Columns.AutoFit();
+                            if (type.IsSimpleType())
+                            {
+                                SimpleTypeProcessing(type, inputArray, rowCount, dateFormat, ws);
+                            }
+                            else
+                            {
+                                ComplexTypeProcessing(stringsTrimmed, type, inputArray, rowCount, dateFormat, ws);
+                            }
+
+                            ws.Columns.AutoFit();
+                        }
                     }
 
                     switch (postCreationAction)
@@ -82,7 +85,6 @@ namespace UsefulDataTools
                 }
                 finally
                 {
-                    app.SheetsInNewWorkbook = sheetsInNewWorkbook;
                     if (exception != null)
                     {
                         if (app.Workbooks.Any())
@@ -178,11 +180,7 @@ namespace UsefulDataTools
         {
             for (var column = 0; column < simplePropertyCount; column++)
             {
-                var value = simpleProperties[column].GetValue(inputArray[row]);
-                if (value != null && (value is string || value is char) && stringsTrimmed)
-                    dataArray[row, column] = value.ToTrimmedString();
-                else
-                    dataArray[row, column] = value;
+                inputArray[row].SetDataPerColumn(stringsTrimmed,column,row,dataArray,simpleProperties[column].GetValue);
             }
         }
 
@@ -190,12 +188,17 @@ namespace UsefulDataTools
         {
             for (var column = simplePropertyCount; column < simplePropertyCount + simpleFieldCount; column++)
             {
-                var value = simpleFields[column - simplePropertyCount].GetValue(inputArray[row]);
-                if (value != null && (value is string || value is char) && stringsTrimmed)
-                    dataArray[row, column] = value.ToTrimmedString();
-                else
-                    dataArray[row, column] = value;
+                inputArray[row].SetDataPerColumn(stringsTrimmed, column, row, dataArray, simpleFields[column - simplePropertyCount].GetValue);
             }
+        }
+
+        private static void SetDataPerColumn<T>(this T item, bool stringsTrimmed, int column, int row, object[,] dataArray, Func<object, object> getValueFunction)
+        {
+            var value = getValueFunction.Invoke(item);
+            if (value != null && (value is string || value is char) && stringsTrimmed)
+                dataArray[row, column] = value.ToTrimmedString();
+            else
+                dataArray[row, column] = value;
         }
 
         private static void SimpleTypeProcessing<T>(Type type, T[] inputArray, int rowCount, string dateFormat, Worksheet ws)
