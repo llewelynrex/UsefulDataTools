@@ -96,7 +96,7 @@ namespace UsefulDataTools
             var hashCode = enumerableType.GetHashCode();
             var hashCodeElement = new HashCodeElement(hashCode) {ParentHashCodeElement = parentHashCodeElement};
 
-            if (hashCodeElement.HashKeyExistsInStructure(hashCode))
+            if (hashCodeElement.HashCodeExistsInStructure(hashCode))
             {
                 var childRecursiveXAttribute = new XAttribute(XName.Get("Recursive"), hashCode.ToString());
                 childXElement.Add(childRecursiveXAttribute);
@@ -120,7 +120,7 @@ namespace UsefulDataTools
             currentXElement.Add(currentXElementTypeXAttribute);
             parentXContainer.Add(currentXElement);
 
-            if (hashCodeElement.HashKeyExistsInStructure(hashCode))
+            if (hashCodeElement.HashCodeExistsInStructure(hashCode))
             {
                 var currentXElementRecursiveXAttribute = new XAttribute(XName.Get("Recursive"),hashCode.ToString());
                 currentXElement.Add(currentXElementRecursiveXAttribute);

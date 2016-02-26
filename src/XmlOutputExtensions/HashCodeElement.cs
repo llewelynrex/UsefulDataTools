@@ -8,7 +8,7 @@ namespace UsefulDataTools
         private readonly int _currentHashCode;
 
         /// <summary>
-        /// The <see cref="ParentHashCodeElement"/> will be set at every level in the search and can be compared using <see cref="HashKeyExistsInStructure"/>.
+        /// The <see cref="ParentHashCodeElement"/> will be set at every level in the search and can be compared using <see cref="HashCodeExistsInStructure"/>.
         /// </summary>
         public HashCodeElement ParentHashCodeElement { private get; set; }
 
@@ -26,13 +26,13 @@ namespace UsefulDataTools
         /// </summary>
         /// <param name="hashCode">A generated Hash Code which will be compared to all other hash codes in the structure.</param>
         /// <returns><see cref="bool"/></returns>
-        public bool HashKeyExistsInStructure(int hashCode)
+        public bool HashCodeExistsInStructure(int hashCode)
         {
             if (ParentHashCodeElement == null)
                 return false;
             if (hashCode == ParentHashCodeElement._currentHashCode)
                 return true;
-            return ParentHashCodeElement.HashKeyExistsInStructure(hashCode);
+            return ParentHashCodeElement.HashCodeExistsInStructure(hashCode);
         }
     }
 }
