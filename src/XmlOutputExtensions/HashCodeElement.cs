@@ -25,7 +25,7 @@ namespace UsefulDataTools
         /// Check whether the <see cref="hashCode"/> already exists within the recursive structure.
         /// </summary>
         /// <param name="hashCode">A generated Hash Code which will be compared to all other hash codes in the structure.</param>
-        /// <returns>bool</returns>
+        /// <returns><see cref="bool"/></returns>
         public bool HashKeyExistsInStructure(int hashCode)
         {
             if (ParentHashCodeElement == null)

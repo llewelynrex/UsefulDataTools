@@ -9,7 +9,7 @@ namespace UsefulDataTools
         /// </summary>
         /// <param name="input">The source string for the operation.</param>
         /// <param name="length">The number of characters to return.</param>
-        /// <returns>string</returns>
+        /// <returns><see cref="string"/></returns>
         public static string Left(this string input, int length)
         {
             if (string.IsNullOrEmpty(input))
@@ -29,7 +29,7 @@ namespace UsefulDataTools
         /// </summary>
         /// <param name="input">The source string for the operation.</param>
         /// <param name="length">The number of characters to return.</param>
-        /// <returns>string</returns>
+        /// <returns><see cref="string"/></returns>
         public static string Right(this string input, int length)
         {
             if (string.IsNullOrEmpty(input))
@@ -48,7 +48,7 @@ namespace UsefulDataTools
         /// Converts any object to string and then trims the new string.
         /// </summary>
         /// <param name="input">The source string for the operation.</param>
-        /// <returns>string</returns>
+        /// <returns><see cref="string"/></returns>
         public static string ToTrimmedString(this object input)
         {
             return input.ToString().Trim();
@@ -59,7 +59,7 @@ namespace UsefulDataTools
         /// </summary>
         /// <param name="input">The source string for the operation.</param>
         /// <param name="length">The number of characters to add.</param>
-        /// <returns>string</returns>
+        /// <returns><see cref="string"/></returns>
         public static string AddWhitespaceLeft(this string input,int length)
         {
             if (string.IsNullOrEmpty(input))
@@ -76,7 +76,7 @@ namespace UsefulDataTools
         /// </summary>
         /// <param name="input">The source string for the operation.</param>
         /// <param name="length">The number of characters to add.</param>
-        /// <returns>string</returns>
+        /// <returns><see cref="string"/></returns>
         public static string AddWhitespaceRight(this string input, int length)
         {
             if (string.IsNullOrEmpty(input))

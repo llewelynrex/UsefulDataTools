@@ -9,7 +9,44 @@ namespace UsefulDataTools
 {
     public static class XmlOutputExtensions
     {
-        public static XDocument ToXml<T>(this T input, string path = null, string encoding = "UTF-8", string rootElementName = "Root")
+        /// <summary>
+        /// Generates a <see cref="XDocument"/> with a default encoding of UTF-8 and a root element named Root from the 
+        /// object <see cref="input"/> of type <see cref="T"/> by recursively evaluating each field and property until 
+        /// only simple types are reached.
+        /// </summary>
+        /// <typeparam name="T">Any type for which an <see cref="XDocument"/> is required.</typeparam>
+        /// <param name="input">The input object which will be recursively evaluated.</param>
+        /// <returns><see cref="XDocument"/></returns>
+        public static XDocument ToXml<T>(this T input)
+        {
+            return input.ToXml(null, "UTF-8", "Root");
+        }
+
+        /// <summary>
+        /// Generates a <see cref="XDocument"/> with a default encoding of UTF-8 and a root element named Root from the 
+        /// object <see cref="input"/> of type <see cref="T"/> by recursively evaluating each field and property until 
+        /// only simple types are reached. The result is saved to <see cref="path"/>.
+        /// </summary>
+        /// <typeparam name="T">Any type for which an <see cref="XDocument"/> is required.</typeparam>
+        /// <param name="input">The input object which will be recursively evaluated.</param>
+        /// <param name="path">If the path is specified, the generated <see cref="XDocument"/> will be saved as an xml file.</param>
+        /// <returns><see cref="XDocument"/></returns>
+        public static XDocument ToXml<T>(this T input, string path)
+        {
+            return input.ToXml(path, "UTF-8", "Root");
+        }
+
+        /// <summary>
+        /// Generates a <see cref="XDocument"/> from the object <see cref="input"/> of type <see cref="T"/> by recursively
+        /// evaluating each field and property until only simple types are reached.
+        /// </summary>
+        /// <typeparam name="T">Any type for which an <see cref="XDocument"/> is required.</typeparam>
+        /// <param name="input">The input object which will be recursively evaluated.</param>
+        /// <param name="path">If the path is specified, the generated <see cref="XDocument"/> will be saved as an xml file.</param>
+        /// <param name="encoding">The encoding which will be used for the <see cref="XDeclaration"/>.</param>
+        /// <param name="rootElementName">The name of the root element of the generated <see cref="XDocument"/>.</param>
+        /// <returns><see cref="XDocument"/></returns>
+        public static XDocument ToXml<T>(this T input, string path, string encoding, string rootElementName)
         {
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
