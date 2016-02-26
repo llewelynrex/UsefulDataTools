@@ -28,6 +28,12 @@ namespace UsefulDataTools
                                    t.GetTypeInfo().BaseType == typeof (Enum);
         }
 
+        /// <summary>
+        /// Evaluates whether <see cref="T"/> is a simple type.
+        /// </summary>
+        /// <typeparam name="T">T is only valid for System.Type.</typeparam>
+        /// <param name="type">The type object which is to be evaluated.</param>
+        /// <returns>bool</returns>
         public static bool IsSimpleType<T>(this T type)
             where T : Type
         {
@@ -36,6 +42,11 @@ namespace UsefulDataTools
             return SimpleTypesPredicate(type);
         }
 
+        /// <summary>
+        /// Evaluates to see whether <see cref="type"/> is a simple type.
+        /// </summary>
+        /// <param name="type">The type object which is to be evaluated.</param>
+        /// <returns>bool</returns>
         public static bool IsSimpleType(Type type)
         {
             return type.IsSimpleType();
