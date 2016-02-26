@@ -37,9 +37,8 @@ namespace UsefulDataTools
         public static bool IsSimpleType<T>(this T type)
             where T : Type
         {
-            if (type.Name == "Nullable`1")
-                return SimpleTypesPredicate(Nullable.GetUnderlyingType(type));
-            return SimpleTypesPredicate(type);
+            var underlyingType = Nullable.GetUnderlyingType(type);
+            return SimpleTypesPredicate(underlyingType ?? type);
         }
 
         /// <summary>
