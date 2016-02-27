@@ -39,20 +39,23 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HashCodeElement.cs" />
+    <Compile Include="..\XmlOutputExtensions45\HashCodeElement.cs">
+      <Link>HashCodeElement.cs</Link>
+    </Compile>
+    <Compile Include="..\XmlOutputExtensions45\XmlOutputExtensions.cs">
+      <Link>XmlOutputExtensions.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlOutputExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{f6a36e27-b8a0-45f2-9a25-e6e87edd8801}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
+    <Reference Include="UsefulDataTools.Common">
+      <HintPath>..\..\lib\portable\UsefulDataTools.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\lib\" /Y /R
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)..\lib\" /Y /R</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\lib\portable\" /Y /R
+xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)..\lib\portable\" /Y /R</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

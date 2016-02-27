@@ -39,13 +39,15 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SimpleTypes.cs" />
+    <Compile Include="..\Common45\SimpleTypes.cs">
+      <Link>SimpleTypes.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\lib\" /Y /R
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)..\lib\" /Y /R</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\lib\portable\" /Y /R
+xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)..\lib\portable\" /Y /R</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

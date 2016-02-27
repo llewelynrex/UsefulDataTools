@@ -78,6 +78,22 @@
       <HintPath>..\packages\System.Xml.XPath.XDocument.4.0.0\lib\net46\System.Xml.XPath.XDocument.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="UsefulDataTools.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net45\UsefulDataTools.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UsefulDataTools.CsvOutputExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net45\UsefulDataTools.CsvOutputExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UsefulDataTools.StringExtensions, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net45\UsefulDataTools.StringExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UsefulDataTools.XmlOutputExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net45\UsefulDataTools.XmlOutputExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -101,28 +117,6 @@
     <Compile Include="TestDemoClass.cs" />
     <Compile Include="TestDemoEnum.cs" />
     <Compile Include="XmlOutputExtensionTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{f6a36e27-b8a0-45f2-9a25-e6e87edd8801}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CsvOutputExtensions\CsvOutputExtensions.csproj">
-      <Project>{8bc380fc-f6f3-437e-815f-3c7a332ff522}</Project>
-      <Name>CsvOutputExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExcelOutputExtensions\ExcelOutputExtensions.csproj">
-      <Project>{17ae780b-30e7-4e24-82d9-212bcd3ae67d}</Project>
-      <Name>ExcelOutputExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StringExtensions\StringExtensions.csproj">
-      <Project>{cfbb517b-9e15-4973-84ca-96168e930376}</Project>
-      <Name>StringExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XmlOutputExtensions\XmlOutputExtensions.csproj">
-      <Project>{5a868191-c93b-4a4c-b5a5-c8c8546e4635}</Project>
-      <Name>XmlOutputExtensions</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
