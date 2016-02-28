@@ -80,19 +80,23 @@
     </Reference>
     <Reference Include="UsefulDataTools.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\net45\UsefulDataTools.Common.dll</HintPath>
+      <HintPath>..\..\lib\net461\UsefulDataTools.Common.dll</HintPath>
     </Reference>
     <Reference Include="UsefulDataTools.CsvOutputExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\net45\UsefulDataTools.CsvOutputExtensions.dll</HintPath>
+      <HintPath>..\..\lib\net461\UsefulDataTools.CsvOutputExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UsefulDataTools.ExcelOutputExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net461\UsefulDataTools.ExcelOutputExtensions.dll</HintPath>
     </Reference>
     <Reference Include="UsefulDataTools.StringExtensions, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\net45\UsefulDataTools.StringExtensions.dll</HintPath>
+      <HintPath>..\..\lib\net461\UsefulDataTools.StringExtensions.dll</HintPath>
     </Reference>
     <Reference Include="UsefulDataTools.XmlOutputExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\net45\UsefulDataTools.XmlOutputExtensions.dll</HintPath>
+      <HintPath>..\..\lib\net461\UsefulDataTools.XmlOutputExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
