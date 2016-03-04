@@ -28,10 +28,10 @@ namespace UsefulDataTools
         /// </summary>
         /// <typeparam name="T">A generic type which is contained within the IEnumerable.</typeparam>
         /// <param name="input">An IEnumerable object of type <see cref="T"/> which will be evaluated, expanded and exported into Excel.</param>
-        /// <param name="stringsTrimmed">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
-        public static void ToExcel<T>(this IEnumerable<T> input, bool stringsTrimmed)
+        /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
+        public static void ToExcel<T>(this IEnumerable<T> input, bool trim)
         {
-            input.ToExcel(stringsTrimmed, null, PostCreationActions.Open, "Data");
+            input.ToExcel(trim, null, PostCreationActions.Open, "Data");
         }
 
         /// <summary>
@@ -55,11 +55,11 @@ namespace UsefulDataTools
         /// </summary>
         /// <typeparam name="T">A generic type which is contained within the IEnumerable.</typeparam>
         /// <param name="input">An IEnumerable object of type <see cref="T"/> which will be evaluated, expanded and exported into Excel.</param>
-        /// <param name="stringsTrimmed">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
+        /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
         /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
         /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
-        public static void ToExcel<T>(this IEnumerable<T> input, bool stringsTrimmed, string path, PostCreationActions postCreationAction, string worksheetName)
+        public static void ToExcel<T>(this IEnumerable<T> input, bool trim, string path, PostCreationActions postCreationAction, string worksheetName)
         {
             var type = typeof(T);
             var inputArray = input.ToArray();
@@ -89,7 +89,7 @@ namespace UsefulDataTools
                             }
                             else
                             {
-                                ComplexTypeProcessing(stringsTrimmed, type, inputArray, rowCount, dateFormat, ws);
+                                ComplexTypeProcessing(trim, type, inputArray, rowCount, dateFormat, ws);
                             }
 
                             ws.Columns.AutoFit();
