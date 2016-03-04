@@ -273,7 +273,12 @@ namespace UsefulDataTools
             }
         }
 
-        private static string GetExcelColumnName(int columnNumber)
+        /// <summary>
+        /// Returns the alphabetical column name when given the number of an excel column.
+        /// </summary>
+        /// <param name="columnNumber">The number to be converted to text</param>
+        /// <returns><see cref="string"/></returns>
+        public static string GetExcelColumnName(int columnNumber)
         {
             var dividend = columnNumber;
             var columnName = string.Empty;
