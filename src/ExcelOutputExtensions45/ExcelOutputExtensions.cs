@@ -18,7 +18,7 @@ namespace UsefulDataTools
         /// <param name="input">An IEnumerable object of type <see cref="T"/> which will be evaluated, expanded and exported into Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input)
         {
-            input.ToExcel(true, null, PostCreationActions.Open);
+            input.ToExcel(true, null, PostCreationActions.Open, "Data");
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace UsefulDataTools
         /// <param name="stringsTrimmed">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, bool stringsTrimmed)
         {
-            input.ToExcel(stringsTrimmed, null, PostCreationActions.Open);
+            input.ToExcel(stringsTrimmed, null, PostCreationActions.Open, "Data");
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace UsefulDataTools
         /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, string path, PostCreationActions postCreationAction)
         {
-            input.ToExcel(true, path, postCreationAction);
+            input.ToExcel(true, path, postCreationAction, "Data");
         }
 
         /// <summary>
@@ -58,7 +58,8 @@ namespace UsefulDataTools
         /// <param name="stringsTrimmed">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
         /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
-        public static void ToExcel<T>(this IEnumerable<T> input, bool stringsTrimmed, string path, PostCreationActions postCreationAction)
+        /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
+        public static void ToExcel<T>(this IEnumerable<T> input, bool stringsTrimmed, string path, PostCreationActions postCreationAction, string worksheetName)
         {
             var type = typeof(T);
             var inputArray = input.ToArray();
@@ -80,7 +81,7 @@ namespace UsefulDataTools
                         app.SheetsInNewWorkbook = sheetsInNewWorkbook;
                         using (var ws = (Worksheet)wb.Worksheets.Single())
                         {
-                            ws.Name = type.Name;
+                            ws.Name = worksheetName;
 
                             if (type.IsSimpleType())
                             {
@@ -130,7 +131,8 @@ namespace UsefulDataTools
                             }
                         }
 
-                        if (app.IsDisposed) throw exception;
+                        if (app.IsDisposed)
+                            throw exception;
                         app.Quit();
                         app.Dispose();
                         throw exception;
@@ -188,7 +190,7 @@ namespace UsefulDataTools
             {
                 var rangeColumn = GetExcelColumnName(column + 1);
                 var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-                SetRangeNumberFormatBasedOnDataType(simpleProperties[column].PropertyType,range,dateFormat);
+                SetRangeNumberFormatBasedOnDataType(simpleProperties[column].PropertyType, range, dateFormat);
             }
         }
 
@@ -214,7 +216,7 @@ namespace UsefulDataTools
         {
             for (var column = 0; column < simplePropertyCount; column++)
             {
-                inputArray[row].SetDataPerColumn(stringsTrimmed,column,row,dataArray,simpleProperties[column].GetValue);
+                inputArray[row].SetDataPerColumn(stringsTrimmed, column, row, dataArray, simpleProperties[column].GetValue);
             }
         }
 
@@ -247,7 +249,7 @@ namespace UsefulDataTools
 
             const string rangeColumn = "A";
             var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-            SetRangeNumberFormatBasedOnDataType(type,range,dateFormat);
+            SetRangeNumberFormatBasedOnDataType(type, range, dateFormat);
 
             dataRange.Value2 = dataArray;
 
