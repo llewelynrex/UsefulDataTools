@@ -264,7 +264,7 @@ namespace UsefulDataTools
                 case PostCreationActions.SaveAndView:
                 case PostCreationActions.SaveAndClose:
                     if (string.IsNullOrEmpty(path))
-                        throw new ArgumentException("The path cannot be null or empty if the file is to be saved.", nameof(path));
+                        throw new ArgumentException($"The {nameof(path)} cannot be null or empty if the file is to be saved.", nameof(path));
                     break;
                 case PostCreationActions.Open:
                     break;
