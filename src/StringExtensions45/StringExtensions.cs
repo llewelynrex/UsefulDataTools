@@ -114,6 +114,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a byte.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to a <see cref="byte"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="byte"/></returns>
         public static byte ToByte(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             byte result;
@@ -138,6 +146,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a sbyte.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to a <see cref="sbyte"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="sbyte"/></returns>
         public static sbyte ToSByte(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             sbyte result;
@@ -162,6 +178,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into an int.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="int"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="int"/></returns>
         public static int ToInt(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             int result;
@@ -186,6 +210,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into an uint.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="uint"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="uint"/></returns>
         public static uint ToUInt(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             uint result;
@@ -210,6 +242,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a short.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to a <see cref="short"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="short"/></returns>
         public static short ToShort(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             short result;
@@ -234,6 +274,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into an ushort.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="ushort"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="ushort"/></returns>
         public static ushort ToUShort(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             ushort result;
@@ -258,6 +306,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a long.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="long"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="long"/></returns>
         public static long ToLong(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             long result;
@@ -282,6 +338,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into an ulong.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="ulong"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="ulong"/></returns>
         public static ulong ToULong(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             ulong result;
@@ -306,6 +370,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a float.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="float"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="float"/></returns>
         public static float ToFloat(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             float result;
@@ -330,6 +402,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a double.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="double"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="double"/></returns>
         public static double ToDouble(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             double result;
@@ -354,6 +434,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a decimal.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="decimal"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="numberStyle">The style to use for the number which is to be converted.</param>
+        /// <returns><see cref="decimal"/></returns>
         public static decimal ToDecimal(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
             decimal result;
@@ -408,6 +496,14 @@ namespace UsefulDataTools
             throw new InvalidCastException("The input cannot be changed into a DateTime.");
         }
 
+        /// <summary>
+        /// Uses the <see cref="input"/> string and tries to convert it to an <see cref="DateTime"/>. An <see cref="InvalidCastException"/> will be 
+        /// thrown if the conversion fails.
+        /// </summary>
+        /// <param name="input">The source string for the operation.</param>
+        /// <param name="formatProvider">The <see cref="IFormatProvider"/> to use for formatting the output.</param>
+        /// <param name="dateTimeStyle">The style to use for the <see cref="DateTime"/> which is to be converted.</param>
+        /// <returns><see cref="DateTime"/></returns>
         public static DateTime ToDateTime(this string input, IFormatProvider formatProvider, DateTimeStyles dateTimeStyle)
         {
             DateTime result;
