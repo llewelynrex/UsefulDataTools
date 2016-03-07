@@ -107,6 +107,9 @@ namespace UsefulDataTools
         /// <returns><see cref="byte"/></returns>
         public static byte ToByte(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             byte result;
             var parsed = byte.TryParse(input, out result);
             if (parsed)
@@ -124,6 +127,9 @@ namespace UsefulDataTools
         /// <returns><see cref="byte"/></returns>
         public static byte ToByte(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             byte result;
             var parsed = byte.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -139,6 +145,9 @@ namespace UsefulDataTools
         /// <returns><see cref="sbyte"/></returns>
         public static sbyte ToSByte(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             sbyte result;
             var parsed = sbyte.TryParse(input, out result);
             if (parsed)
@@ -156,6 +165,9 @@ namespace UsefulDataTools
         /// <returns><see cref="sbyte"/></returns>
         public static sbyte ToSByte(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             sbyte result;
             var parsed = sbyte.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -171,6 +183,9 @@ namespace UsefulDataTools
         /// <returns><see cref="int"/></returns>
         public static int ToInt(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             int result;
             var parsed = int.TryParse(input, out result);
             if (parsed)
@@ -188,6 +203,9 @@ namespace UsefulDataTools
         /// <returns><see cref="int"/></returns>
         public static int ToInt(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             int result;
             var parsed = int.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -203,6 +221,9 @@ namespace UsefulDataTools
         /// <returns><see cref="uint"/></returns>
         public static uint ToUInt(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             uint result;
             var parsed = uint.TryParse(input, out result);
             if (parsed)
@@ -220,6 +241,9 @@ namespace UsefulDataTools
         /// <returns><see cref="uint"/></returns>
         public static uint ToUInt(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             uint result;
             var parsed = uint.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -235,6 +259,9 @@ namespace UsefulDataTools
         /// <returns><see cref="short"/></returns>
         public static short ToShort(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             short result;
             var parsed = short.TryParse(input, out result);
             if (parsed)
@@ -252,6 +279,9 @@ namespace UsefulDataTools
         /// <returns><see cref="short"/></returns>
         public static short ToShort(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             short result;
             var parsed = short.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -267,6 +297,9 @@ namespace UsefulDataTools
         /// <returns><see cref="ushort"/></returns>
         public static ushort ToUShort(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             ushort result;
             var parsed = ushort.TryParse(input, out result);
             if (parsed)
@@ -284,6 +317,9 @@ namespace UsefulDataTools
         /// <returns><see cref="ushort"/></returns>
         public static ushort ToUShort(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             ushort result;
             var parsed = ushort.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -299,6 +335,9 @@ namespace UsefulDataTools
         /// <returns><see cref="long"/></returns>
         public static long ToLong(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             long result;
             var parsed = long.TryParse(input, out result);
             if (parsed)
@@ -316,6 +355,9 @@ namespace UsefulDataTools
         /// <returns><see cref="long"/></returns>
         public static long ToLong(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             long result;
             var parsed = long.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -331,6 +373,9 @@ namespace UsefulDataTools
         /// <returns><see cref="ulong"/></returns>
         public static ulong ToULong(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             ulong result;
             var parsed = ulong.TryParse(input, out result);
             if (parsed)
@@ -348,6 +393,9 @@ namespace UsefulDataTools
         /// <returns><see cref="ulong"/></returns>
         public static ulong ToULong(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             ulong result;
             var parsed = ulong.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -363,6 +411,9 @@ namespace UsefulDataTools
         /// <returns><see cref="float"/></returns>
         public static float ToFloat(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             float result;
             var parsed = float.TryParse(input, out result);
             if (parsed)
@@ -380,6 +431,9 @@ namespace UsefulDataTools
         /// <returns><see cref="float"/></returns>
         public static float ToFloat(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             float result;
             var parsed = float.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -395,6 +449,9 @@ namespace UsefulDataTools
         /// <returns><see cref="double"/></returns>
         public static double ToDouble(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             double result;
             var parsed = double.TryParse(input, out result);
             if (parsed)
@@ -412,6 +469,9 @@ namespace UsefulDataTools
         /// <returns><see cref="double"/></returns>
         public static double ToDouble(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             double result;
             var parsed = double.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -427,6 +487,9 @@ namespace UsefulDataTools
         /// <returns><see cref="decimal"/></returns>
         public static decimal ToDecimal(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             decimal result;
             var parsed = decimal.TryParse(input, out result);
             if (parsed)
@@ -444,6 +507,9 @@ namespace UsefulDataTools
         /// <returns><see cref="decimal"/></returns>
         public static decimal ToDecimal(this string input, IFormatProvider formatProvider, NumberStyles numberStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             decimal result;
             var parsed = decimal.TryParse(input, numberStyle, formatProvider, out result);
             if (parsed)
@@ -459,6 +525,9 @@ namespace UsefulDataTools
         /// <returns><see cref="bool"/></returns>
         public static bool ToBool(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             bool result;
             var parsed = bool.TryParse(input, out result);
             if (parsed)
@@ -474,6 +543,9 @@ namespace UsefulDataTools
         /// <returns><see cref="char"/></returns>
         public static char ToChar(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             char result;
             var parsed = char.TryParse(input, out result);
             if (parsed)
@@ -489,6 +561,9 @@ namespace UsefulDataTools
         /// <returns><see cref="DateTime"/></returns>
         public static DateTime ToDateTime(this string input)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             DateTime result;
             var parsed = DateTime.TryParse(input, out result);
             if (parsed)
@@ -506,6 +581,9 @@ namespace UsefulDataTools
         /// <returns><see cref="DateTime"/></returns>
         public static DateTime ToDateTime(this string input, IFormatProvider formatProvider, DateTimeStyles dateTimeStyle)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             DateTime result;
             var parsed = DateTime.TryParse(input, formatProvider, dateTimeStyle, out result);
             if (parsed)
