@@ -65,7 +65,7 @@ namespace UsefulDataTools
             var inputArray = input.ToArray();
             var rowCount = inputArray.Length;
             Exception exception = null;
-            var dateFormat = Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern + " " + Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern;
+            var dateFormat = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern + " " + System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern;
 
             AbortIfPathIsEmptyAndSaveIsRequired(path, postCreationAction);
 

@@ -9,6 +9,21 @@ The following extension methods are contained within this class:
 * ToTrimmedString - Takes any object, runs ToString and at the same time trims the string.
 * AddWhitespaceLeft - Creates a new string with the specified number of spaces to the left.
 * AddWhitespaceRight - Creates a new string with the specified number of spaces to the right.
+The following are some type conversions that converts to the specified type if possible:
+* ToByte
+* ToSByte
+* ToInt
+* ToUInt
+* ToShort
+* ToUShort
+* ToLong
+* ToULong
+* ToFloat
+* ToDouble
+* ToDecimal
+* ToBool
+* ToChar
+* ToDateTime
 
 CsvOutputExtensions
 -------------------
