@@ -39,7 +39,7 @@ XmlOutputExtensions
 * ToXml - Recursively outputs an XML of an object until a simple type is reached. Also checks for infinite loops using hash codes.
 
 Simple Types
-************
+------------
 byte
 sbyte
 int
