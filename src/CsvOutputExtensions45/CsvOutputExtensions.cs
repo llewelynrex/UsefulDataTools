@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace UsefulDataTools
@@ -18,7 +19,7 @@ namespace UsefulDataTools
         /// </returns>
         public static string ToCsv<T>(this IEnumerable<T> input)
         {
-            return input.ToCsv(',', null, false);
+            return input.ToCsv(null, ',', false);
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace UsefulDataTools
         /// </returns>
         public static string ToCsv<T>(this IEnumerable<T> input, bool trim)
         {
-            return input.ToCsv(',', null, trim);
+            return input.ToCsv(null, ',', trim);
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace UsefulDataTools
         /// </returns>
         public static string ToCsv<T>(this IEnumerable<T> input, char separator)
         {
-            return input.ToCsv(separator, null, false);
+            return input.ToCsv(null, separator, false);
         }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace UsefulDataTools
         /// </returns>
         public static string ToCsv<T>(this IEnumerable<T> input, char separator, bool trim)
         {
-            return input.ToCsv(separator, null, trim);
+            return input.ToCsv(null, separator, trim);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace UsefulDataTools
         /// </returns>
         public static string ToCsv<T>(this IEnumerable<T> input, string path)
         {
-            return input.ToCsv(',', path, false);
+            return input.ToCsv(path, ',', false);
         }
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace UsefulDataTools
         /// </returns>
         public static string ToCsv<T>(this IEnumerable<T> input, string path, bool trim)
         {
-            return input.ToCsv(',', path, trim);
+            return input.ToCsv(path, ',', trim);
         }
 
         /// <summary>
@@ -109,15 +110,15 @@ namespace UsefulDataTools
         /// </summary>
         /// <typeparam name="T">Any type T.</typeparam>
         /// <param name="input">An <see cref="IEnumerable{T}" />.</param>
-        /// <param name="separator">A separator to use for the csv output.</param>
         /// <param name="path">A path string which is used to automatically write the generated csv to a file.</param>
+        /// <param name="separator">A separator to use for the csv output.</param>
         /// <param name="trim">A parameter which indicates whether the strings for each element should be trimmed or not.</param>
         /// <returns>
         ///     <see cref="string" />
         /// </returns>
-        public static string ToCsv<T>(this IEnumerable<T> input, char separator, string path, bool trim)
+        public static string ToCsv<T>(this IEnumerable<T> input, string path, char separator, bool trim)
         {
-            var type = typeof (T);
+            var type = typeof(T);
             string output;
 
             if (trim)
@@ -133,7 +134,7 @@ namespace UsefulDataTools
 
                     stringBuilder.AppendLine(
                                              string.Concat(
-                                                           string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.Name.ToTrimmedString()).ToArray()),
+                                                           string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.GetCustomAttribute<ColumnHeaderAttribute>() != null ? p.GetCustomAttribute<ColumnHeaderAttribute>().Header : p.Name.ToTrimmedString()).ToArray()),
                                                            fields.Any(f => f.FieldType.IsSimpleType()) ? separator.ToString() : string.Empty,
                                                            string.Join(separator.ToString(), fields.Where(f => f.FieldType.IsSimpleType()).Select(f => f.Name.ToTrimmedString()).ToArray())
                                                  )
@@ -166,7 +167,7 @@ namespace UsefulDataTools
 
                     stringBuilder.AppendLine(
                                              string.Concat(
-                                                           string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.Name).ToArray()),
+                                                           string.Join(separator.ToString(), properties.Where(p => p.PropertyType.IsSimpleType()).Select(p => p.GetCustomAttribute<ColumnHeaderAttribute>() != null ? p.GetCustomAttribute<ColumnHeaderAttribute>().Header : p.Name).ToArray()),
                                                            fields.Any(f => f.FieldType.IsSimpleType()) ? separator.ToString() : string.Empty,
                                                            string.Join(separator.ToString(), fields.Where(f => f.FieldType.IsSimpleType()).Select(f => f.Name).ToArray())
                                                  )

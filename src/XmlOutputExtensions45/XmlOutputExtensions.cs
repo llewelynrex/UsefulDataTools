@@ -71,7 +71,7 @@ namespace UsefulDataTools
             if (enumerable != null)
                 ToXmlInternal(enumerable, xDocument, rootXElement, hashCodeElement);
             else
-                ToXmlInternal(input, xDocument, rootXElement, hashCodeElement);
+                ToXmlInternal(input, xDocument, rootXElement, null);
 
             if (!string.IsNullOrEmpty(path))
             {

@@ -18,7 +18,7 @@ namespace UsefulDataTools
         /// <param name="input">An <see cref="IEnumerable{T}"/> which will be evaluated, expanded and exported into Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input)
         {
-            input.ToExcel(true, null, PostCreationActions.Open, "Data");
+            input.ToExcel(true, PostCreationActions.Open, null, "Data");
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace UsefulDataTools
         /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, bool trim)
         {
-            input.ToExcel(trim, null, PostCreationActions.Open, "Data");
+            input.ToExcel(trim, PostCreationActions.Open, null, "Data");
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace UsefulDataTools
         /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, string path, PostCreationActions postCreationAction)
         {
-            input.ToExcel(true, path, postCreationAction, "Data");
+            input.ToExcel(true, postCreationAction, path, "Data");
         }
 
         /// <summary>
@@ -56,10 +56,10 @@ namespace UsefulDataTools
         /// <typeparam name="T">A generic type which is contained within the IEnumerable.</typeparam>
         /// <param name="input">An <see cref="IEnumerable{T}"/> which will be evaluated, expanded and exported into Excel.</param>
         /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
-        /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
+        /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
-        public static void ToExcel<T>(this IEnumerable<T> input, bool trim, string path, PostCreationActions postCreationAction, string worksheetName)
+        public static void ToExcel<T>(this IEnumerable<T> input, bool trim, PostCreationActions postCreationAction, string path, string worksheetName)
         {
             var type = typeof(T);
             var inputArray = input.ToArray();
@@ -154,8 +154,8 @@ namespace UsefulDataTools
             var headerEndCell = ws.Cells[1, simplePropertyCount + simpleFieldCount];
             var headerRange = ws.Range(headerStartCell, headerEndCell);
 
-            var propertyHeaderArray = simpleProperties.Select(x => x.Name).ToArray();
-            var fieldHeaderArray = simpleFields.Select(x => x.Name).ToArray();
+            var propertyHeaderArray = simpleProperties.Select(x => x.GetCustomAttribute<ColumnHeaderAttribute>() != null ? x.GetCustomAttribute<ColumnHeaderAttribute>().Header : x.Name).ToArray();
+            var fieldHeaderArray = simpleFields.Select(x => x.GetCustomAttribute<ColumnHeaderAttribute>() != null ? x.GetCustomAttribute<ColumnHeaderAttribute>().Header : x.Name).ToArray();
 
             var headerList = new List<string>();
             headerList.AddRange(propertyHeaderArray);

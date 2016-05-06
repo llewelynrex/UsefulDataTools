@@ -94,10 +94,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\net461\UsefulDataTools.StringExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="UsefulDataTools.XmlOutputExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\net461\UsefulDataTools.XmlOutputExtensions.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -125,6 +121,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XmlOutputExtensions45\XmlOutputExtensions45.csproj">
+      <Project>{05b5e075-8d25-415c-9dd0-32f36dc9b026}</Project>
+      <Name>XmlOutputExtensions45</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

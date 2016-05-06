@@ -225,7 +225,8 @@ namespace UsefulDataToolsTests
         [TestMethod]
         public void TestToXmlComplexTypeOutput()
         {
-            //TODO: Test non-simple object
+            var xDocument = _testDemoClass.ToXml();
+            var xDocumentString = xDocument.ToString();
         }
 
         [TestMethod]
