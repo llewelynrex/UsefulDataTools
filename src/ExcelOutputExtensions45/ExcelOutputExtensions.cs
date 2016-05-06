@@ -41,9 +41,9 @@ namespace UsefulDataTools
         /// </summary>
         /// <typeparam name="T">A generic type which is contained within the IEnumerable.</typeparam>
         /// <param name="input">An <see cref="IEnumerable{T}"/> which will be evaluated, expanded and exported into Excel.</param>
-        /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
-        public static void ToExcel<T>(this IEnumerable<T> input, string path, PostCreationActions postCreationAction)
+        /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
+        public static void ToExcel<T>(this IEnumerable<T> input, PostCreationActions postCreationAction, string path)
         {
             input.ToExcel(true, postCreationAction, path, "Data");
         }
