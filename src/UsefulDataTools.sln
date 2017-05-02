@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOutputExtensions45", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOutputExtensions461", "ExcelOutputExtensions461\ExcelOutputExtensions461.csproj", "{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{4C25BDB5-776F-47A3-A4E1-D67496C6574B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C25BDB5-776F-47A3-A4E1-D67496C6574B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C25BDB5-776F-47A3-A4E1-D67496C6574B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C25BDB5-776F-47A3-A4E1-D67496C6574B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C25BDB5-776F-47A3-A4E1-D67496C6574B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

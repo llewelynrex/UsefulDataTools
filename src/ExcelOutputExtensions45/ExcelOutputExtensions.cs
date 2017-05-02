@@ -156,6 +156,7 @@ namespace UsefulDataTools
         public static void ToExcel(this ExcelOutputItem excelOutputItem)
         {
             var excelOutputCollection = new ExcelOutputCollection(excelOutputItem.PostCreationActions, excelOutputItem.Path);
+            excelOutputCollection.Add(excelOutputItem);
             excelOutputCollection.ToExcel();
         }
 
