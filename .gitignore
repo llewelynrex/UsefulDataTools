@@ -3,6 +3,8 @@
 ################################################################################
 
 /.vs
+/.vs/slnx.sqlite
+/.vs/ProjectSettings.json
 /src/packages
 /src/.vs
 /src/Common45/bin
