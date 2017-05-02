@@ -17,7 +17,7 @@ namespace UsefulDataTools
         /// </summary>
         public static ExcelOutputItem CreateInstance<T>(IEnumerable<T> enumerable)
         {
-            return CreateInstance(enumerable, "Data", true, PostCreationActions.Open, null);
+            return CreateInstance(enumerable, typeof(T), "Data", true, PostCreationActions.Open, null);
         }
 
         /// <summary>
