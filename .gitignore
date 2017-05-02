@@ -3,7 +3,7 @@
 ################################################################################
 
 /src/packages
-/src/.vs/config
+/src/.vs
 /src/Common45/bin
 /src/Common45/obj
 /src/Common461/bin
