@@ -20,8 +20,7 @@ namespace UsefulDataTools
         /// <param name="input">An <see cref="IEnumerable{T}"/> which will be evaluated, expanded and exported into Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input)
         {
-            var type = typeof(T);
-            ToExcel(input, type, "Data", true, PostCreationActions.Open, null);
+            ExcelOutputItem.CreateInstance(input).ToExcel();
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace UsefulDataTools
         /// <param name="type">The type of the objects contained within the IEnumerable in <see cref="input"/>.</param>
         public static void ToExcel(IEnumerable input, Type type)
         {
-            ToExcel(input, type, "Data", true, PostCreationActions.Open, null);
+            ExcelOutputItem.CreateInstance(input, type).ToExcel();
         }
 
         /// <summary>
@@ -46,8 +45,7 @@ namespace UsefulDataTools
         /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, bool trim)
         {
-            var type = typeof(T);
-            ToExcel(input, type, "Data", trim, PostCreationActions.Open, null);
+            ExcelOutputItem.CreateInstance(input, trim).ToExcel();
         }
 
         /// <summary>
@@ -60,7 +58,7 @@ namespace UsefulDataTools
         /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
         public static void ToExcel(IEnumerable input, Type type, bool trim)
         {
-            ToExcel(input, type, "Data", trim, PostCreationActions.Open, null);
+            ExcelOutputItem.CreateInstance(input, type, trim).ToExcel();
         }
 
         /// <summary>
@@ -73,8 +71,7 @@ namespace UsefulDataTools
         /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, string worksheetName)
         {
-            var type = typeof(T);
-            ToExcel(input, type, worksheetName, true, PostCreationActions.Open, null);
+            ExcelOutputItem.CreateInstance(input, worksheetName).ToExcel();
         }
 
         /// <summary>
@@ -87,7 +84,7 @@ namespace UsefulDataTools
         /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
         public static void ToExcel(this IEnumerable input, Type type, string worksheetName)
         {
-            ToExcel(input, type, worksheetName, true, PostCreationActions.Open, null);
+            ExcelOutputItem.CreateInstance(input, type, worksheetName).ToExcel();
         }
 
         /// <summary>
@@ -101,8 +98,7 @@ namespace UsefulDataTools
         /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, PostCreationActions postCreationAction, string path)
         {
-            var type = typeof(T);
-            ToExcel(input, type, "Data", true, postCreationAction, path);
+            ExcelOutputItem.CreateInstance(input, postCreationAction, path).ToExcel();
         }
 
         /// <summary>
@@ -116,7 +112,7 @@ namespace UsefulDataTools
         /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         public static void ToExcel(this IEnumerable input, Type type, PostCreationActions postCreationAction, string path)
         {
-            ToExcel(input, type, "Data", true, postCreationAction, path);
+            ExcelOutputItem.CreateInstance(input, type, postCreationAction, path).ToExcel();
         }
 
         /// <summary>
@@ -132,8 +128,7 @@ namespace UsefulDataTools
         /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, string worksheetName, bool trim, PostCreationActions postCreationAction, string path)
         {
-            var type = typeof(T);
-            ToExcel(input, type, worksheetName, trim, postCreationAction, path);
+            ExcelOutputItem.CreateInstance(input, worksheetName, trim, postCreationAction, path).ToExcel();
         }
 
         /// <summary>
@@ -149,68 +144,7 @@ namespace UsefulDataTools
         /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
         public static void ToExcel(IEnumerable input, Type type, string worksheetName, bool trim, PostCreationActions postCreationAction, string path)
         {
-            Exception exception = null;
-
-            ExcelOutputConfiguration.DefaultCulture = Thread.CurrentThread.CurrentCulture;
-
-            ExcelOutputConfiguration.DefaultDateTimeFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.ShortDatePattern + " " + Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern;
-            ExcelOutputConfiguration.DefaultDateFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.ShortDatePattern;
-            ExcelOutputConfiguration.DefaultTimeFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.LongTimePattern;
-
-            //HACK: Workaround for Excel bug on machines which are set up in the English language, but not an English region.
-            var enusCultureInfo = CultureInfo.GetCultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = enusCultureInfo;
-
-            AbortIfPathIsEmptyAndSaveIsRequired(path, postCreationAction);
-
-            using (var app = new Application())
-            {
-                var sheetsInNewWorkbook = app.SheetsInNewWorkbook;
-                app.SheetsInNewWorkbook = 1;
-
-                try
-                {
-                    var enumerator = input.GetEnumerator();
-                    var arrayList = new ArrayList();
-                    while (enumerator.MoveNext())
-                        arrayList.Add(enumerator.Current);
-
-                    var inputArray = arrayList.ToArray();
-                    var rowCount = inputArray.Length;
-
-                    CreateWorkbook(app, worksheetName, type, inputArray, rowCount, trim);
-
-                    ExecutePostCreationActions(app, postCreationAction, path);
-                }
-                catch (Exception ex)
-                {
-                    exception = ex;
-                }
-                finally
-                {
-                    app.SheetsInNewWorkbook = sheetsInNewWorkbook;
-
-                    Thread.CurrentThread.CurrentCulture = ExcelOutputConfiguration.DefaultCulture;
-
-                    if (exception != null)
-                    {
-                        if (app.Workbooks.Any())
-                        {
-                            foreach (var workbook in app.Workbooks.Where(x => !x.IsDisposed))
-                            {
-                                workbook.Close(false, Missing.Value, Missing.Value);
-                                workbook.Dispose();
-                            }
-                        }
-
-                        if (app.IsDisposed)
-                            throw exception;
-                        app.Quit();
-                        app.Dispose();
-                        throw exception;
-                    }
-                }
-            }
+            ExcelOutputItem.CreateInstance(input, type, worksheetName, trim, postCreationAction, path).ToExcel();
         }
 
         /// <summary>
@@ -221,7 +155,8 @@ namespace UsefulDataTools
         /// <param name="excelOutputItem">An object containing all the necessary parameters to create an Excel export into a single worksheet.</param>
         public static void ToExcel(this ExcelOutputItem excelOutputItem)
         {
-            ToExcel(excelOutputItem.Enumerable, excelOutputItem.Type, excelOutputItem.WorksheetName, excelOutputItem.Trim, excelOutputItem.PostCreationActions, excelOutputItem.Path);
+            var excelOutputCollection = new ExcelOutputCollection(excelOutputItem.PostCreationActions, excelOutputItem.Path);
+            excelOutputCollection.ToExcel();
         }
 
         /// <summary>
@@ -305,28 +240,6 @@ namespace UsefulDataTools
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(postCreationAction), postCreationAction, null);
-            }
-        }
-
-        private static void CreateWorkbook(Application app, string worksheetName, Type type, object[] inputArray, int rowCount, bool trim)
-        {
-            using (var wb = app.Workbooks.Add())
-            {
-                using (var ws = (Worksheet)wb.Worksheets.Single())
-                {
-                    ws.Name = worksheetName;
-
-                    if (type.IsSimpleType())
-                    {
-                        SimpleTypeProcessing(type, inputArray, rowCount, ws);
-                    }
-                    else
-                    {
-                        ComplexTypeProcessing(trim, type, inputArray, rowCount, ws);
-                    }
-
-                    ws.Columns.AutoFit();
-                }
             }
         }
 
