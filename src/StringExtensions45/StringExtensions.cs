@@ -110,8 +110,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            byte result;
-            var parsed = byte.TryParse(input, out result);
+            var parsed = byte.TryParse(input, out byte result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a byte.");
@@ -130,8 +129,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            byte result;
-            var parsed = byte.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = byte.TryParse(input, numberStyle, formatProvider, out byte result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a byte.");
@@ -148,8 +146,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            sbyte result;
-            var parsed = sbyte.TryParse(input, out result);
+            var parsed = sbyte.TryParse(input, out sbyte result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a sbyte.");
@@ -168,8 +165,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            sbyte result;
-            var parsed = sbyte.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = sbyte.TryParse(input, numberStyle, formatProvider, out sbyte result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a sbyte.");
@@ -186,8 +182,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            int result;
-            var parsed = int.TryParse(input, out result);
+            var parsed = int.TryParse(input, out int result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an int.");
@@ -206,8 +201,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            int result;
-            var parsed = int.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = int.TryParse(input, numberStyle, formatProvider, out int result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an int.");
@@ -224,8 +218,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            uint result;
-            var parsed = uint.TryParse(input, out result);
+            var parsed = uint.TryParse(input, out uint result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an uint.");
@@ -244,8 +237,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            uint result;
-            var parsed = uint.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = uint.TryParse(input, numberStyle, formatProvider, out uint result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an uint.");
@@ -262,8 +254,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            short result;
-            var parsed = short.TryParse(input, out result);
+            var parsed = short.TryParse(input, out short result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a short.");
@@ -282,8 +273,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            short result;
-            var parsed = short.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = short.TryParse(input, numberStyle, formatProvider, out short result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a short.");
@@ -300,8 +290,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            ushort result;
-            var parsed = ushort.TryParse(input, out result);
+            var parsed = ushort.TryParse(input, out ushort result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an ushort.");
@@ -320,8 +309,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            ushort result;
-            var parsed = ushort.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = ushort.TryParse(input, numberStyle, formatProvider, out ushort result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an ushort.");
@@ -338,8 +326,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            long result;
-            var parsed = long.TryParse(input, out result);
+            var parsed = long.TryParse(input, out long result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a long.");
@@ -358,8 +345,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            long result;
-            var parsed = long.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = long.TryParse(input, numberStyle, formatProvider, out long result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a long.");
@@ -376,8 +362,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            ulong result;
-            var parsed = ulong.TryParse(input, out result);
+            var parsed = ulong.TryParse(input, out ulong result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an ulong.");
@@ -396,8 +381,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            ulong result;
-            var parsed = ulong.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = ulong.TryParse(input, numberStyle, formatProvider, out ulong result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into an ulong.");
@@ -414,8 +398,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            float result;
-            var parsed = float.TryParse(input, out result);
+            var parsed = float.TryParse(input, out float result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a float.");
@@ -434,8 +417,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            float result;
-            var parsed = float.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = float.TryParse(input, numberStyle, formatProvider, out float result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a float.");
@@ -452,8 +434,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            double result;
-            var parsed = double.TryParse(input, out result);
+            var parsed = double.TryParse(input, out double result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a double.");
@@ -472,8 +453,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            double result;
-            var parsed = double.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = double.TryParse(input, numberStyle, formatProvider, out double result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a double.");
@@ -490,8 +470,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            decimal result;
-            var parsed = decimal.TryParse(input, out result);
+            var parsed = decimal.TryParse(input, out decimal result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a decimal.");
@@ -510,8 +489,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            decimal result;
-            var parsed = decimal.TryParse(input, numberStyle, formatProvider, out result);
+            var parsed = decimal.TryParse(input, numberStyle, formatProvider, out decimal result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a decimal.");
@@ -528,8 +506,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            bool result;
-            var parsed = bool.TryParse(input, out result);
+            var parsed = bool.TryParse(input, out bool result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a bool.");
@@ -546,8 +523,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            char result;
-            var parsed = char.TryParse(input, out result);
+            var parsed = char.TryParse(input, out char result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a char.");
@@ -564,8 +540,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            DateTime result;
-            var parsed = DateTime.TryParse(input, out result);
+            var parsed = DateTime.TryParse(input, out DateTime result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a DateTime.");
@@ -584,8 +559,7 @@ namespace UsefulDataTools
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            DateTime result;
-            var parsed = DateTime.TryParse(input, formatProvider, dateTimeStyle, out result);
+            var parsed = DateTime.TryParse(input, formatProvider, dateTimeStyle, out DateTime result);
             if (parsed)
                 return result;
             throw new InvalidCastException("The input cannot be changed into a DateTime.");

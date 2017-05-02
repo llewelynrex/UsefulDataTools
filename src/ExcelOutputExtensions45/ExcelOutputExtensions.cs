@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -18,7 +20,20 @@ namespace UsefulDataTools
         /// <param name="input">An <see cref="IEnumerable{T}"/> which will be evaluated, expanded and exported into Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input)
         {
-            input.ToExcel(true, PostCreationActions.Open, null, "Data");
+            var type = typeof(T);
+            ToExcel(input, type, "Data", true, PostCreationActions.Open, null);
+        }
+
+        /// <summary>
+        /// Evaluates, expands and exports an <see cref="IEnumerable"/> of type <see cref="type"/> into Excel. If <see cref="type"/> is a complex type, 
+        /// all properties and fields are exported into columns. If <see cref="type"/> is a simple type, the data is exported into a 
+        /// single column.
+        /// </summary>
+        /// <param name="input">An <see cref="IEnumerable"/> which will be evaluated, expanded and exported into Excel.</param>
+        /// <param name="type">The type of the objects contained within the IEnumerable in <see cref="input"/>.</param>
+        public static void ToExcel(IEnumerable input, Type type)
+        {
+            ToExcel(input, type, "Data", true, PostCreationActions.Open, null);
         }
 
         /// <summary>
@@ -31,7 +46,48 @@ namespace UsefulDataTools
         /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, bool trim)
         {
-            input.ToExcel(trim, PostCreationActions.Open, null, "Data");
+            var type = typeof(T);
+            ToExcel(input, type, "Data", trim, PostCreationActions.Open, null);
+        }
+
+        /// <summary>
+        /// Evaluates, expands and exports an <see cref="IEnumerable"/> of type <see cref="type"/> into Excel. If <see cref="type"/> is a complex type, 
+        /// all properties and fields are exported into columns. If <see cref="type"/> is a simple type, the data is exported into a 
+        /// single column.
+        /// </summary>
+        /// <param name="input">An <see cref="IEnumerable"/> which will be evaluated, expanded and exported into Excel.</param>
+        /// <param name="type">The type of the objects contained within the IEnumerable in <see cref="input"/>.</param>
+        /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
+        public static void ToExcel(IEnumerable input, Type type, bool trim)
+        {
+            ToExcel(input, type, "Data", trim, PostCreationActions.Open, null);
+        }
+
+        /// <summary>
+        /// Evaluates, expands and exports an <see cref="IEnumerable{T}"/> into Excel and opens Excel to display the exported data. 
+        /// If <see cref="T"/> is a complex type, all properties and fields are exported into columns. If <see cref="T"/> is a simple type, 
+        /// the data is exported into a single column.
+        /// </summary>
+        /// <typeparam name="T">A generic type which is contained within the IEnumerable.</typeparam>
+        /// <param name="input">An <see cref="IEnumerable{T}"/> which will be evaluated, expanded and exported into Excel.</param>
+        /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
+        public static void ToExcel<T>(this IEnumerable<T> input, string worksheetName)
+        {
+            var type = typeof(T);
+            ToExcel(input, type, worksheetName, true, PostCreationActions.Open, null);
+        }
+
+        /// <summary>
+        /// Evaluates, expands and exports an <see cref="IEnumerable"/> of type <see cref="type"/> into Excel. If <see cref="type"/> is a complex type, 
+        /// all properties and fields are exported into columns. If <see cref="type"/> is a simple type, the data is exported into a 
+        /// single column.
+        /// </summary>
+        /// <param name="input">An <see cref="IEnumerable"/> which will be evaluated, expanded and exported into Excel.</param>
+        /// <param name="type">The type of the objects contained within the IEnumerable in <see cref="input"/>.</param>
+        /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
+        public static void ToExcel(this IEnumerable input, Type type, string worksheetName)
+        {
+            ToExcel(input, type, worksheetName, true, PostCreationActions.Open, null);
         }
 
         /// <summary>
@@ -45,7 +101,22 @@ namespace UsefulDataTools
         /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         public static void ToExcel<T>(this IEnumerable<T> input, PostCreationActions postCreationAction, string path)
         {
-            input.ToExcel(true, postCreationAction, path, "Data");
+            var type = typeof(T);
+            ToExcel(input, type, "Data", true, postCreationAction, path);
+        }
+
+        /// <summary>
+        /// Evaluates, expands and exports an <see cref="IEnumerable"/> of type <see cref="type"/> into Excel. If <see cref="type"/> is a complex type, 
+        /// all properties and fields are exported into columns. If <see cref="type"/> is a simple type, the data is exported into a 
+        /// single column.
+        /// </summary>
+        /// <param name="input">An <see cref="IEnumerable"/> which will be evaluated, expanded and exported into Excel.</param>
+        /// <param name="type">The type of the objects contained within the IEnumerable in <see cref="input"/>.</param>
+        /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
+        /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
+        public static void ToExcel(this IEnumerable input, Type type, PostCreationActions postCreationAction, string path)
+        {
+            ToExcel(input, type, "Data", true, postCreationAction, path);
         }
 
         /// <summary>
@@ -59,13 +130,36 @@ namespace UsefulDataTools
         /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
         /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
         /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
-        public static void ToExcel<T>(this IEnumerable<T> input, bool trim, PostCreationActions postCreationAction, string path, string worksheetName)
+        public static void ToExcel<T>(this IEnumerable<T> input, string worksheetName, bool trim, PostCreationActions postCreationAction, string path)
         {
             var type = typeof(T);
-            var inputArray = input.ToArray();
-            var rowCount = inputArray.Length;
+            ToExcel(input, type, worksheetName, trim, postCreationAction, path);
+        }
+
+        /// <summary>
+        /// Evaluates, expands and exports an <see cref="IEnumerable"/> of type <see cref="type"/> into Excel. If <see cref="type"/> is a complex type, 
+        /// all properties and fields are exported into columns. If <see cref="type"/> is a simple type, the data is exported into a 
+        /// single column.
+        /// </summary>
+        /// <param name="input">An <see cref="IEnumerable"/> which will be evaluated, expanded and exported into Excel.</param>
+        /// <param name="type">The type of the objects contained within the IEnumerable in <see cref="input"/>.</param>
+        /// <param name="trim">A parameter which determines whether strings should be trimmed before being written to Excel.</param>
+        /// <param name="postCreationAction">Determines whether the Excel file will be opened with the data, opened and saved or just saved.</param>
+        /// <param name="path">If the path parameter determines where the Excel file will be saved to if a save action is selected from the <see cref="PostCreationActions"/>.</param>
+        /// <param name="worksheetName">The name given to the newly generated worksheet.</param>
+        public static void ToExcel(IEnumerable input, Type type, string worksheetName, bool trim, PostCreationActions postCreationAction, string path)
+        {
             Exception exception = null;
-            var dateFormat = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern + " " + System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern;
+
+            ExcelOutputConfiguration.DefaultCulture = Thread.CurrentThread.CurrentCulture;
+
+            ExcelOutputConfiguration.DefaultDateTimeFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.ShortDatePattern + " " + Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern;
+            ExcelOutputConfiguration.DefaultDateFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.ShortDatePattern;
+            ExcelOutputConfiguration.DefaultTimeFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.LongTimePattern;
+
+            //HACK: Workaround for Excel bug on machines which are set up in the English language, but not an English region.
+            var enusCultureInfo = CultureInfo.GetCultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = enusCultureInfo;
 
             AbortIfPathIsEmptyAndSaveIsRequired(path, postCreationAction);
 
@@ -76,43 +170,17 @@ namespace UsefulDataTools
 
                 try
                 {
-                    using (var wb = app.Workbooks.Add())
-                    {
-                        app.SheetsInNewWorkbook = sheetsInNewWorkbook;
-                        using (var ws = (Worksheet)wb.Worksheets.Single())
-                        {
-                            ws.Name = worksheetName;
+                    var enumerator = input.GetEnumerator();
+                    var arrayList = new ArrayList();
+                    while (enumerator.MoveNext())
+                        arrayList.Add(enumerator.Current);
 
-                            if (type.IsSimpleType())
-                            {
-                                SimpleTypeProcessing(type, inputArray, rowCount, dateFormat, ws);
-                            }
-                            else
-                            {
-                                ComplexTypeProcessing(trim, type, inputArray, rowCount, dateFormat, ws);
-                            }
+                    var inputArray = arrayList.ToArray();
+                    var rowCount = inputArray.Length;
 
-                            ws.Columns.AutoFit();
-                        }
-                    }
+                    CreateWorkbook(app, worksheetName, type, inputArray, rowCount, trim);
 
-                    switch (postCreationAction)
-                    {
-                        case PostCreationActions.Open:
-                            app.Visible = true;
-                            break;
-                        case PostCreationActions.SaveAndView:
-                            app.ActiveWorkbook.SaveAs(path);
-                            app.Visible = true;
-                            break;
-                        case PostCreationActions.SaveAndClose:
-                            app.ActiveWorkbook.SaveAs(path);
-                            app.Quit();
-                            app.Dispose();
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException(nameof(postCreationAction), postCreationAction, null);
-                    }
+                    ExecutePostCreationActions(app, postCreationAction, path);
                 }
                 catch (Exception ex)
                 {
@@ -120,6 +188,10 @@ namespace UsefulDataTools
                 }
                 finally
                 {
+                    app.SheetsInNewWorkbook = sheetsInNewWorkbook;
+
+                    Thread.CurrentThread.CurrentCulture = ExcelOutputConfiguration.DefaultCulture;
+
                     if (exception != null)
                     {
                         if (app.Workbooks.Any())
@@ -141,7 +213,159 @@ namespace UsefulDataTools
             }
         }
 
-        private static void ComplexTypeProcessing<T>(bool stringsTrimmed, Type type, T[] inputArray, int rowCount, string dateFormat, Worksheet ws)
+        /// <summary>
+        /// Evaluates, expands and exports an <see cref="IEnumerable"/> of a specified type contained in <see cref="excelOutputItem"/>into Excel. If the specified type is a complex type, 
+        /// all properties and fields are exported into columns. If the specified type is a simple type, the data is exported into a 
+        /// single column.
+        /// </summary>
+        /// <param name="excelOutputItem">An object containing all the necessary parameters to create an Excel export into a single worksheet.</param>
+        public static void ToExcel(this ExcelOutputItem excelOutputItem)
+        {
+            ToExcel(excelOutputItem.Enumerable, excelOutputItem.Type, excelOutputItem.WorksheetName, excelOutputItem.Trim, excelOutputItem.PostCreationActions, excelOutputItem.Path);
+        }
+
+        /// <summary>
+        /// Evaluates, expands and exports a collection of <see cref="ExcelOutputItem"/> objects, with their respective types defined in each <see cref="ExcelOutputItem"/> object,
+        /// into Excel. A new sheet is created for each <see cref="ExcelOutputItem"/> object.
+        /// </summary>
+        /// <param name="excelOutputCollection">An object containing all the necessary parameters to create an Excel export into a multiple worksheets.</param>
+        public static void ToExcel(this ExcelOutputCollection excelOutputCollection)
+        {
+            Exception exception = null;
+
+            ExcelOutputConfiguration.DefaultCulture = Thread.CurrentThread.CurrentCulture;
+
+            ExcelOutputConfiguration.DefaultDateTimeFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.ShortDatePattern + " " + Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern;
+            ExcelOutputConfiguration.DefaultDateFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.ShortDatePattern;
+            ExcelOutputConfiguration.DefaultTimeFormat = ExcelOutputConfiguration.DefaultCulture.DateTimeFormat.LongTimePattern;
+
+            //HACK: Workaround for Excel bug on machines which are set up in the English language, but not an English region.
+            var enusCultureInfo = CultureInfo.GetCultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = enusCultureInfo;
+
+            AbortIfPathIsEmptyAndSaveIsRequired(excelOutputCollection.Path, excelOutputCollection.PostCreationAction);
+
+            using (var app = new Application())
+            {
+                var sheetsInNewWorkbook = app.SheetsInNewWorkbook;
+                app.SheetsInNewWorkbook = excelOutputCollection.Count;
+
+                try
+                {
+                    CreateWorkbook(app, excelOutputCollection);
+
+                    ExecutePostCreationActions(app, excelOutputCollection.PostCreationAction, excelOutputCollection.Path);
+                }
+                catch (Exception ex)
+                {
+                    exception = ex;
+                }
+                finally
+                {
+                    app.SheetsInNewWorkbook = sheetsInNewWorkbook;
+
+                    Thread.CurrentThread.CurrentCulture = ExcelOutputConfiguration.DefaultCulture;
+
+                    if (exception != null)
+                    {
+                        if (app.Workbooks.Any())
+                        {
+                            foreach (var workbook in app.Workbooks.Where(x => !x.IsDisposed))
+                            {
+                                workbook.Close(false, Missing.Value, Missing.Value);
+                                workbook.Dispose();
+                            }
+                        }
+
+                        if (app.IsDisposed)
+                            throw exception;
+                        app.Quit();
+                        app.Dispose();
+                        throw exception;
+                    }
+                }
+            }
+        }
+
+        private static void ExecutePostCreationActions(Application app, PostCreationActions postCreationAction, string path)
+        {
+            switch (postCreationAction)
+            {
+                case PostCreationActions.Open:
+                    app.Visible = true;
+                    break;
+                case PostCreationActions.SaveAndView:
+                    app.ActiveWorkbook.SaveAs(path);
+                    app.Visible = true;
+                    break;
+                case PostCreationActions.SaveAndClose:
+                    app.ActiveWorkbook.SaveAs(path);
+                    app.Quit();
+                    app.Dispose();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(postCreationAction), postCreationAction, null);
+            }
+        }
+
+        private static void CreateWorkbook(Application app, string worksheetName, Type type, object[] inputArray, int rowCount, bool trim)
+        {
+            using (var wb = app.Workbooks.Add())
+            {
+                using (var ws = (Worksheet)wb.Worksheets.Single())
+                {
+                    ws.Name = worksheetName;
+
+                    if (type.IsSimpleType())
+                    {
+                        SimpleTypeProcessing(type, inputArray, rowCount, ws);
+                    }
+                    else
+                    {
+                        ComplexTypeProcessing(trim, type, inputArray, rowCount, ws);
+                    }
+
+                    ws.Columns.AutoFit();
+                }
+            }
+        }
+
+        private static void CreateWorkbook(Application app, ExcelOutputCollection excelOutputCollection)
+        {
+            using (var wb = app.Workbooks.Add())
+            {
+                var count = 1;
+                foreach (var item in excelOutputCollection)
+                {
+                    using (var ws = (Worksheet)wb.Worksheets[count])
+                    {
+                        var enumerator = item.Enumerable.GetEnumerator();
+                        var arrayList = new ArrayList();
+                        while (enumerator.MoveNext())
+                            arrayList.Add(enumerator.Current);
+
+                        var inputArray = arrayList.ToArray();
+                        var rowCount = inputArray.Length;
+
+                        ws.Name = item.WorksheetName;
+
+                        if (item.Type.IsSimpleType())
+                        {
+                            SimpleTypeProcessing(item.Type, inputArray, rowCount, ws);
+                        }
+                        else
+                        {
+                            ComplexTypeProcessing(item.Trim, item.Type, inputArray, rowCount, ws);
+                        }
+
+                        ws.Columns.AutoFit();
+                    }
+                    count++;
+                }
+            }
+        }
+
+        private static void ComplexTypeProcessing(bool stringsTrimmed, Type type, object[] inputArray, int rowCount, Worksheet ws)
         {
             var properties = type.GetProperties();
             var fields = type.GetFields();
@@ -164,9 +388,9 @@ namespace UsefulDataTools
             var headerArray = headerList.ToArray();
             headerRange.Value2 = headerArray;
 
-            SetPropertyColumnDataTypes(dateFormat, ws, simpleProperties);
+            SetPropertyColumnDataTypes(ws, simpleProperties);
 
-            SetFieldColumnDataTypes(dateFormat, ws, simpleProperties.Length, simpleFields);
+            SetFieldColumnDataTypes(ws, simpleProperties.Length, simpleFields);
 
             var dataStartCell = ws.Cells[2, 1];
             var dataEndCell = ws.Cells[rowCount + 1, simplePropertyCount + simpleFieldCount];
@@ -184,35 +408,48 @@ namespace UsefulDataTools
             fullRange.Worksheet.ListObjects.Add(NetOffice.ExcelApi.Enums.XlListObjectSourceType.xlSrcRange, fullRange, Type.Missing, NetOffice.ExcelApi.Enums.XlYesNoGuess.xlYes, Type.Missing).Name = $"Table_{type.Name}";
         }
 
-        private static void SetPropertyColumnDataTypes(string dateFormat, Worksheet ws, PropertyInfo[] simpleProperties)
+        private static void SetPropertyColumnDataTypes(Worksheet ws, PropertyInfo[] simpleProperties)
         {
             for (var column = 0; column < simpleProperties.Length; column++)
             {
                 var rangeColumn = GetExcelColumnName(column + 1);
                 var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-                SetRangeNumberFormatBasedOnDataType(simpleProperties[column].PropertyType, range, dateFormat);
+                var columnDataTypeAttribute = simpleProperties[column].GetCustomAttribute<ColumnNumberFormatAttribute>();
+                if (columnDataTypeAttribute == null)
+                    SetRangeNumberFormatBasedOnDataType(simpleProperties[column].PropertyType, range);
+                else
+                    SetRangeNumberFormatBasedOnAttribute(range, columnDataTypeAttribute.NumberFormat);
             }
         }
 
-        private static void SetFieldColumnDataTypes(string dateFormat, Worksheet ws, int simplePropertiesCount, FieldInfo[] simpleFields)
+        private static void SetFieldColumnDataTypes(Worksheet ws, int simplePropertiesCount, FieldInfo[] simpleFields)
         {
             for (var column = simplePropertiesCount; column < simplePropertiesCount + simpleFields.Length; column++)
             {
                 var rangeColumn = GetExcelColumnName(column + 1);
                 var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-                SetRangeNumberFormatBasedOnDataType(simpleFields[column - simplePropertiesCount].FieldType, range, dateFormat);
+                var columnDataTypeAttribute = simpleFields[column - simplePropertiesCount].GetCustomAttribute<ColumnNumberFormatAttribute>();
+                if (columnDataTypeAttribute == null)
+                    SetRangeNumberFormatBasedOnDataType(simpleFields[column - simplePropertiesCount].FieldType, range);
+                else
+                    SetRangeNumberFormatBasedOnAttribute(range, columnDataTypeAttribute.NumberFormat);
             }
         }
 
-        private static void SetRangeNumberFormatBasedOnDataType(Type type, Range range, string dateFormat)
+        private static void SetRangeNumberFormatBasedOnDataType(Type type, Range range)
         {
             if (type == typeof(string) || type == typeof(char) || Nullable.GetUnderlyingType(type) == typeof(char))
                 range.NumberFormat = "@";
             else if (type == typeof(DateTime) || Nullable.GetUnderlyingType(type) == typeof(DateTime))
-                range.NumberFormat = dateFormat;
+                range.NumberFormat = ExcelOutputConfiguration.DefaultDateTimeFormat;
         }
 
-        private static void SetPropertyDataPerColumn<T>(bool stringsTrimmed, T[] inputArray, PropertyInfo[] simpleProperties, int simplePropertyCount, object[,] dataArray, int row)
+        private static void SetRangeNumberFormatBasedOnAttribute(Range range, string numberFormat)
+        {
+            range.NumberFormat = numberFormat;
+        }
+
+        private static void SetPropertyDataPerColumn(bool stringsTrimmed, object[] inputArray, PropertyInfo[] simpleProperties, int simplePropertyCount, object[,] dataArray, int row)
         {
             for (var column = 0; column < simplePropertyCount; column++)
             {
@@ -220,7 +457,7 @@ namespace UsefulDataTools
             }
         }
 
-        private static void SetFieldDataPerColumn<T>(bool stringsTrimmed, T[] inputArray, FieldInfo[] simpleFields, int simplePropertyCount, int simpleFieldCount, object[,] dataArray, int row)
+        private static void SetFieldDataPerColumn(bool stringsTrimmed, object[] inputArray, FieldInfo[] simpleFields, int simplePropertyCount, int simpleFieldCount, object[,] dataArray, int row)
         {
             for (var column = simplePropertyCount; column < simplePropertyCount + simpleFieldCount; column++)
             {
@@ -228,7 +465,7 @@ namespace UsefulDataTools
             }
         }
 
-        private static void SetDataPerColumn<T>(this T item, bool stringsTrimmed, int column, int row, object[,] dataArray, Func<object, object> getValueFunction)
+        private static void SetDataPerColumn(this object item, bool stringsTrimmed, int column, int row, object[,] dataArray, Func<object, object> getValueFunction)
         {
             var value = getValueFunction.Invoke(item);
             if (value != null && (value is string || value is char) && stringsTrimmed)
@@ -237,9 +474,9 @@ namespace UsefulDataTools
                 dataArray[row, column] = value;
         }
 
-        private static void SimpleTypeProcessing<T>(Type type, T[] inputArray, int rowCount, string dateFormat, Worksheet ws)
+        private static void SimpleTypeProcessing(Type type, object[] inputArray, int rowCount, Worksheet ws)
         {
-            var dataArray = new T[rowCount, 1];
+            var dataArray = new object[rowCount, 1];
             for (var i = 0; i < inputArray.Length; i++)
                 dataArray[i, 0] = inputArray[i];
 
@@ -249,7 +486,7 @@ namespace UsefulDataTools
 
             const string rangeColumn = "A";
             var range = ws.Range($"{rangeColumn}:{rangeColumn}");
-            SetRangeNumberFormatBasedOnDataType(type, range, dateFormat);
+            SetRangeNumberFormatBasedOnDataType(type, range);
 
             dataRange.Value2 = dataArray;
 

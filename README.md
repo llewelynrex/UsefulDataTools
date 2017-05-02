@@ -33,10 +33,8 @@ CsvOutputExtensions
 ExcelOutputExtensions
 ---------------------
 * ToExcel - Outputs an IEnumerable of type T as an Excel file, using the NetOffice library, by using the public properties and public fields  which have been found to be simple types and then writing them into an Excel sheet.
-
-XmlOutputExtensions
--------------------
-* ToXml - Recursively outputs an XML of an object until a simple type is reached. Also checks for infinite loops using hash codes.
+* ExcelOutputItem - An item that encapsulates the properties required to create an Excel spreadsheet.
+* ExcelOutputCollection - A collection of ExcelOutputItems which, when exported, creates an Excel spreadsheet with a worksheet for each ExcelOutputItem.
 
 Simple Types
 ------------

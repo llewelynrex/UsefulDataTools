@@ -54,9 +54,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColumnNumberFormatAttribute.cs" />
+    <Compile Include="ExcelNumberFormats.cs" />
+    <Compile Include="ExcelOutputCollection.cs" />
     <Compile Include="ExcelOutputExtensions.cs" />
+    <Compile Include="ExcelOutputItem.cs" />
     <Compile Include="PostCreationActions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorksheetNameExistsException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

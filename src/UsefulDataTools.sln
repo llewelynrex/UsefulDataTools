@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsefulDataToolsTests", "UsefulDataToolsTests\UsefulDataToolsTests.csproj", "{0CA0BD1E-D914-4CBB-90D2-3160358BA869}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common45", "Common45\Common45.csproj", "{5DCC391C-FD92-47B7-83F4-1893904B55FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common461", "Common461\Common461.csproj", "{F0081486-1D42-40CE-9D45-BB7A4027B549}"
@@ -17,10 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringExtensions45", "Strin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringExtensions461", "StringExtensions461\StringExtensions461.csproj", "{059E56DF-22D5-496A-8EAB-3EA73C99777B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlOutputExtensions45", "XmlOutputExtensions45\XmlOutputExtensions45.csproj", "{05B5E075-8D25-415C-9DD0-32F36DC9B026}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlOutputExtensions461", "XmlOutputExtensions461\XmlOutputExtensions461.csproj", "{7FC3A18E-84DF-4DFE-BB7C-2083BE02D73E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOutputExtensions45", "ExcelOutputExtensions45\ExcelOutputExtensions45.csproj", "{E4884AF8-F27B-4747-B04F-70E86AA69DED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOutputExtensions461", "ExcelOutputExtensions461\ExcelOutputExtensions461.csproj", "{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}"
@@ -31,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0CA0BD1E-D914-4CBB-90D2-3160358BA869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CA0BD1E-D914-4CBB-90D2-3160358BA869}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CA0BD1E-D914-4CBB-90D2-3160358BA869}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CA0BD1E-D914-4CBB-90D2-3160358BA869}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5DCC391C-FD92-47B7-83F4-1893904B55FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5DCC391C-FD92-47B7-83F4-1893904B55FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DCC391C-FD92-47B7-83F4-1893904B55FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,14 +49,6 @@ Global
 		{059E56DF-22D5-496A-8EAB-3EA73C99777B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{059E56DF-22D5-496A-8EAB-3EA73C99777B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{059E56DF-22D5-496A-8EAB-3EA73C99777B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05B5E075-8D25-415C-9DD0-32F36DC9B026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05B5E075-8D25-415C-9DD0-32F36DC9B026}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05B5E075-8D25-415C-9DD0-32F36DC9B026}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05B5E075-8D25-415C-9DD0-32F36DC9B026}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FC3A18E-84DF-4DFE-BB7C-2083BE02D73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FC3A18E-84DF-4DFE-BB7C-2083BE02D73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FC3A18E-84DF-4DFE-BB7C-2083BE02D73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FC3A18E-84DF-4DFE-BB7C-2083BE02D73E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E4884AF8-F27B-4747-B04F-70E86AA69DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E4884AF8-F27B-4747-B04F-70E86AA69DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4884AF8-F27B-4747-B04F-70E86AA69DED}.Release|Any CPU.ActiveCfg = Release|Any CPU

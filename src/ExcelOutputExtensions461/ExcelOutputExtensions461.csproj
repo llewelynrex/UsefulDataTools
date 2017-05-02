@@ -54,11 +54,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ExcelOutputExtensions45\ColumnNumberFormatAttribute.cs">
+      <Link>ColumnNumberFormatAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelNumberFormats.cs">
+      <Link>ExcelNumberFormats.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelOutputCollection.cs">
+      <Link>ExcelOutputCollection.cs</Link>
+    </Compile>
     <Compile Include="..\ExcelOutputExtensions45\ExcelOutputExtensions.cs">
       <Link>ExcelOutputExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelOutputItem.cs">
+      <Link>ExcelOutputItem.cs</Link>
+    </Compile>
     <Compile Include="..\ExcelOutputExtensions45\PostCreationActions.cs">
       <Link>PostCreationActions.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\WorksheetNameExistsException.cs">
+      <Link>WorksheetNameExistsException.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

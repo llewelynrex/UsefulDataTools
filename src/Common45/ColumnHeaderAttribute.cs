@@ -7,13 +7,12 @@ namespace UsefulDataTools
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class ColumnHeaderAttribute : Attribute
-
     {
         public ColumnHeaderAttribute(string header)
         {
             Header = header;
         }
 
-        public string Header { get; private set; }
+        public string Header { get; }
     }
 }
