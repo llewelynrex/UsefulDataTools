@@ -31,17 +31,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=26cf6d85ba68fa54, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Excel.1.7.3.0\lib\net45\ExcelApi.dll</HintPath>
+      <HintPath>..\packages\NetOffice.Excel.Net45.1.7.3.0\lib\net45\ExcelApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="NetOffice, Version=1.7.3.0, Culture=neutral, PublicKeyToken=acf636d62c39f8f5, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Core.1.7.3.0\lib\net45\NetOffice.dll</HintPath>
+      <HintPath>..\packages\NetOffice.Core.Net45.1.7.3.0\lib\net45\NetOffice.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=7c1c3e9d16cace88, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Core.1.7.3.0\lib\net45\OfficeApi.dll</HintPath>
+      <HintPath>..\packages\NetOffice.Core.Net45.1.7.3.0\lib\net45\OfficeApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="UsefulDataTools.Common">
       <HintPath>..\..\lib\net461\UsefulDataTools.Common.dll</HintPath>
     </Reference>
@@ -49,7 +52,7 @@
       <HintPath>..\..\lib\net461\UsefulDataTools.StringExtensions.dll</HintPath>
     </Reference>
     <Reference Include="VBIDEApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a3637beacf571e8a, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Core.1.7.3.0\lib\net45\VBIDEApi.dll</HintPath>
+      <HintPath>..\packages\NetOffice.Core.Net45.1.7.3.0\lib\net45\VBIDEApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
@@ -62,6 +65,9 @@
     </Compile>
     <Compile Include="..\ExcelOutputExtensions45\ExcelOutputCollection.cs">
       <Link>ExcelOutputCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelOutputConfiguration.cs">
+      <Link>ExcelOutputConfiguration.cs</Link>
     </Compile>
     <Compile Include="..\ExcelOutputExtensions45\ExcelOutputExtensions.cs">
       <Link>ExcelOutputExtensions.cs</Link>

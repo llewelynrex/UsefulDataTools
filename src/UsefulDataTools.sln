@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common45", "Common45\Common45.csproj", "{5DCC391C-FD92-47B7-83F4-1893904B55FC}"
 EndProject
@@ -18,6 +18,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOutputExtensions45", "ExcelOutputExtensions45\ExcelOutputExtensions45.csproj", "{E4884AF8-F27B-4747-B04F-70E86AA69DED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOutputExtensions461", "ExcelOutputExtensions461\ExcelOutputExtensions461.csproj", "{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common47", "Common47\Common47.csproj", "{271692B1-77C4-49FA-A4E2-6A7171CDFB19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvOutputExtensions47", "CsvOutputExtensions47\CsvOutputExtensions47.csproj", "{049F1406-B613-4857-9549-3D17021F766C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringExtensions47", "StringExtensions47\StringExtensions47.csproj", "{C31B8BB0-8C32-476A-BD5C-60563C624DEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOutputExtensions47", "ExcelOutputExtensions47\ExcelOutputExtensions47.csproj", "{7A969DA9-0C88-4A1C-AB84-DE7E5262EDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{113BE27F-20B1-4BC4-A1DD-8F4339F16CE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,8 +67,31 @@ Global
 		{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E422E8-C5F3-4FA0-8E35-75B0557FA2DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271692B1-77C4-49FA-A4E2-6A7171CDFB19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271692B1-77C4-49FA-A4E2-6A7171CDFB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271692B1-77C4-49FA-A4E2-6A7171CDFB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271692B1-77C4-49FA-A4E2-6A7171CDFB19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049F1406-B613-4857-9549-3D17021F766C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049F1406-B613-4857-9549-3D17021F766C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049F1406-B613-4857-9549-3D17021F766C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049F1406-B613-4857-9549-3D17021F766C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C31B8BB0-8C32-476A-BD5C-60563C624DEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31B8BB0-8C32-476A-BD5C-60563C624DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C31B8BB0-8C32-476A-BD5C-60563C624DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C31B8BB0-8C32-476A-BD5C-60563C624DEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A969DA9-0C88-4A1C-AB84-DE7E5262EDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A969DA9-0C88-4A1C-AB84-DE7E5262EDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A969DA9-0C88-4A1C-AB84-DE7E5262EDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A969DA9-0C88-4A1C-AB84-DE7E5262EDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{113BE27F-20B1-4BC4-A1DD-8F4339F16CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113BE27F-20B1-4BC4-A1DD-8F4339F16CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113BE27F-20B1-4BC4-A1DD-8F4339F16CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113BE27F-20B1-4BC4-A1DD-8F4339F16CE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4F34964-2F25-406C-A4D8-6CD4178E8929}
 	EndGlobalSection
 EndGlobal

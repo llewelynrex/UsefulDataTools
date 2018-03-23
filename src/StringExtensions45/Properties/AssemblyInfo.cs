@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("UsefulDataTools.StringExtensions")]
-[assembly: AssemblyCopyright("Copyright © Llewelyn Rex 2017")]
+[assembly: AssemblyCopyright("Copyright © Llewelyn Rex 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

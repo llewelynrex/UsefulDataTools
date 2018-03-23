@@ -7,7 +7,7 @@
     <ProjectGuid>{059E56DF-22D5-496A-8EAB-3EA73C99777B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UsefulDataTools.StringExtensions</RootNamespace>
+    <RootNamespace>UsefulDataTools</RootNamespace>
     <AssemblyName>UsefulDataTools.StringExtensions</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

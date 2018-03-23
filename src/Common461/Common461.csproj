@@ -33,9 +33,6 @@
     <Compile Include="..\Common45\ColumnHeaderAttribute.cs">
       <Link>ColumnHeaderAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\Common45\ExcelOutputConfiguration.cs">
-      <Link>ExcelOutputConfiguration.cs</Link>
-    </Compile>
     <Compile Include="..\Common45\SimpleTypes.cs">
       <Link>SimpleTypes.cs</Link>
     </Compile>

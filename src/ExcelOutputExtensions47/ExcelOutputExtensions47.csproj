@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7A969DA9-0C88-4A1C-AB84-DE7E5262EDBF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UsefulDataTools</RootNamespace>
+    <AssemblyName>UsefulDataTools.ExcelOutputExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExcelApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=26cf6d85ba68fa54, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Excel.Net45.1.7.3.0\lib\net45\ExcelApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="NetOffice, Version=1.7.3.0, Culture=neutral, PublicKeyToken=acf636d62c39f8f5, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net45.1.7.3.0\lib\net45\NetOffice.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=7c1c3e9d16cace88, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net45.1.7.3.0\lib\net45\OfficeApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UsefulDataTools.Common">
+      <HintPath>..\..\lib\net47\UsefulDataTools.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UsefulDataTools.StringExtensions">
+      <HintPath>..\..\lib\net47\UsefulDataTools.StringExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="VBIDEApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a3637beacf571e8a, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net45.1.7.3.0\lib\net45\VBIDEApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\ExcelOutputExtensions45\ColumnNumberFormatAttribute.cs">
+      <Link>ColumnNumberFormatAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelNumberFormats.cs">
+      <Link>ExcelNumberFormats.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelOutputCollection.cs">
+      <Link>ExcelOutputCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelOutputConfiguration.cs">
+      <Link>ExcelOutputConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelOutputExtensions.cs">
+      <Link>ExcelOutputExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\ExcelOutputItem.cs">
+      <Link>ExcelOutputItem.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\PostCreationActions.cs">
+      <Link>PostCreationActions.cs</Link>
+    </Compile>
+    <Compile Include="..\ExcelOutputExtensions45\WorksheetNameExistsException.cs">
+      <Link>WorksheetNameExistsException.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\lib\net47\" /Y /R
+xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)..\lib\net47\" /Y /R</PostBuildEvent>
+  </PropertyGroup>
+</Project>

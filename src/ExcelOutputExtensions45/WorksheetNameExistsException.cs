@@ -2,5 +2,5 @@
 
 namespace UsefulDataTools
 {
-    public class WorksheetNameExistsException : Exception {}
+   public class WorksheetNameExistsException : Exception { }
 }
