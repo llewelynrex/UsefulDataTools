@@ -449,7 +449,7 @@ namespace UsefulDataTools
          var excelOutputItem = new ExcelOutputItem
          {
             DataTable = dataTable,
-            WorksheetName = !string.IsNullOrWhiteSpace(worksheetName) ? worksheetName : dataTable.TableName,
+            WorksheetName = !string.IsNullOrWhiteSpace(worksheetName) ? worksheetName : !string.IsNullOrWhiteSpace(dataTable.TableName) ? dataTable.TableName : ExcelOutputConfiguration.DefaultWorksheetName,
             Trim = trim,
             PostCreationActions = postCreationAction,
             Path = path,

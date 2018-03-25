@@ -22,3 +22,4 @@ D:\Source\Repos\UsefulDataTools\src\Test\obj\Release\Test.csprojResolveAssemblyR
 D:\Source\Repos\UsefulDataTools\src\Test\obj\Release\Test.csproj.CoreCompileInputs.cache
 D:\Source\Repos\UsefulDataTools\src\Test\obj\Release\Test.exe
 D:\Source\Repos\UsefulDataTools\src\Test\obj\Release\Test.pdb
+D:\Source\Repos\UsefulDataTools\src\Test\obj\Release\Test.csproj.CopyComplete
