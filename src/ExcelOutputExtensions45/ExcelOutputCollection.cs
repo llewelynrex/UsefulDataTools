@@ -115,7 +115,7 @@ namespace UsefulDataTools
             do
             {
                _dataTableCount++;
-               tableName = string.Concat("Table", _dataTableCount);
+               tableName = string.Concat(ExcelOutputConfiguration.DefaultWorksheetName, _dataTableCount);
             } while (_collection.Any(x=>x.WorksheetName == tableName));
 
          }
