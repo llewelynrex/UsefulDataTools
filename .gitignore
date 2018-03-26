@@ -9,3 +9,12 @@
 /src/.vs
 bin/
 obj/
+ExcelApi.dll
+OfficeApi.dll
+NetOffice.dll
+VBIDEApi.dll
+stdole.dll
+ExcelApi.xml
+OfficeApi.xml
+NetOffice.xml
+VBIDEApi.xml

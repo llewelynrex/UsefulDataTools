@@ -62,6 +62,30 @@ namespace UsefulDataTools
       }
 
       /// <summary>
+      ///    Converts any object to string and then trims the start of the new string.
+      /// </summary>
+      /// <param name="input">The source string for the operation.</param>
+      /// <returns>
+      ///    <see cref="string" />
+      /// </returns>
+      public static string ToStartTrimmedString(this object input)
+      {
+         return input.ToString().TrimStart();
+      }
+
+      /// <summary>
+      ///    Converts any object to string and then trims the end of the new string.
+      /// </summary>
+      /// <param name="input">The source string for the operation.</param>
+      /// <returns>
+      ///    <see cref="string" />
+      /// </returns>
+      public static string ToEndTrimmedString(this object input)
+      {
+         return input.ToString().TrimEnd();
+      }
+
+      /// <summary>
       ///    Returns a new string with the specified number of characters added to the left of the input string.
       /// </summary>
       /// <param name="input">The source string for the operation.</param>
