@@ -13,10 +13,10 @@ namespace UsefulDataTools
 
       static ExcelOutputConfiguration()
       {
-         DefaultCulture = Thread.CurrentThread.CurrentCulture;
-         DefaultDateTimeFormat = DefaultCulture.DateTimeFormat.ShortDatePattern + " " + Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern;
+         DefaultCulture = Thread.CurrentThread.CurrentUICulture;
          DefaultDateFormat = DefaultCulture.DateTimeFormat.ShortDatePattern;
-         DefaultTimeFormat = DefaultCulture.DateTimeFormat.LongTimePattern;
+         DefaultTimeFormat = Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern.Replace(" tt", string.Empty);
+         DefaultDateTimeFormat = string.Concat(DefaultDateFormat, " ", DefaultTimeFormat);
          DefaultWorksheetName = "Data";
       }
    }
